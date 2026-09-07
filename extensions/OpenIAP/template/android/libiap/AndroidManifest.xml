@@ -1,0 +1,18 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="com.android.vending.BILLING"/>
+
+    <application>
+        <!--
+            IapInitProvider fires before Application.onCreate() (initOrder = 99 is
+            high — ContentProviders run at init). It calls IapBridge.register() so
+            the JsbBridgeWrapper listener is ready before the first JS frame.
+        -->
+        <provider
+            android:name="com.cocos.iap.IapInitProvider"
+            android:authorities="${applicationId}.iapinit"
+            android:exported="false"
+            android:initOrder="99"/>
+    </application>
+
+</manifest>

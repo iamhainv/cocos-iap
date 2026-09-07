@@ -1,0 +1,2661 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2.4 effective-5.10 (swiftlang-6.2.4.1.4 clang-1700.6.4.2)
+// swift-module-flags: -target arm64-apple-ios15.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name OpenIAP
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.4
+import Combine
+import Foundation
+import StoreKit
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os.log
+import os
+extension OpenIAP.PurchaseError {
+  public static func defaultMessage(for code: OpenIAP.ErrorCode) -> Swift.String
+  public static func defaultMessage(for rawCode: Swift.String) -> Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func make(code: OpenIAP.ErrorCode, productId: Swift.String? = nil, message: Swift.String? = nil) -> OpenIAP.PurchaseError
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func make(code: Swift.String, productId: Swift.String? = nil, message: Swift.String? = nil) -> OpenIAP.PurchaseError
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func emptySkuList(message: Swift.String? = nil) -> OpenIAP.PurchaseError
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func purchaseError(message: Swift.String? = nil, productId: Swift.String? = nil) -> OpenIAP.PurchaseError
+  #endif
+  public static func errorCodeTable() -> [Swift.String : Swift.String]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func wrap(_ error: any Swift.Error, fallback: OpenIAP.ErrorCode = .purchaseError, productId: Swift.String? = nil) -> OpenIAP.PurchaseError
+  #endif
+}
+public enum OpenIapLog {
+  public enum Level : Swift.String {
+    case debug, info, warn, error
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public static var isEnabled: Swift.Bool {
+    get
+    set
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static var handler: ((OpenIAP.OpenIapLog.Level, Swift.String) -> Swift.Void)? {
+    get
+    set
+  }
+  #endif
+  @inline(__always) public static func setEnabled(_ enabled: Swift.Bool)
+  @inline(__always) public static func setHandler(_ custom: @escaping (OpenIAP.OpenIapLog.Level, Swift.String) -> Swift.Void)
+  @inline(__always) public static func debug(_ message: Swift.String)
+  @inline(__always) public static func info(_ message: Swift.String)
+  @inline(__always) public static func warn(_ message: Swift.String)
+  @inline(__always) public static func error(_ message: Swift.String)
+}
+@available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+@objc extension OpenIAP.OpenIapModule {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func initConnectionWithCompletion(_ completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func endConnectionWithCompletion(_ completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func fetchProductsWithSkus(_ skus: [Swift.String], type: Swift.String?, completion: @escaping ([Any]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getPromotedProductIOSWithCompletion(_ completion: @escaping (Any?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func requestPurchaseWithSku(_ sku: Swift.String, quantity: Swift.Int, type: Swift.String?, completion: @escaping (Any?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func requestPurchaseWithPayload(_ payload: [Swift.String : Any], completion: @escaping (Any?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func requestSubscriptionWithSku(_ sku: Swift.String, offer: [Swift.String : Any]?, completion: @escaping (Any?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func requestSubscriptionWithSku(_ sku: Swift.String, offer: [Swift.String : Any]?, introductoryOfferEligibility: Foundation.NSNumber?, promotionalOfferJWS: [Swift.String : Any]?, winBackOfferId: Swift.String?, completion: @escaping (Any?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func restorePurchasesWithCompletion(_ completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getAvailablePurchasesWithCompletion(_ completion: @escaping ([Any]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getAvailablePurchasesWithOptions(_ options: [Swift.String : Any]?, completion: @escaping ([Any]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getAllTransactionsIOSWithCompletion(_ completion: @escaping ([Any]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func syncIOSWithCompletion(_ completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(*, deprecated, message: "Use promotedProductListenerIOS + requestPurchase instead")
+  @objc final public func requestPurchaseOnPromotedProductIOSWithCompletion(_ completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func deepLinkToSubscriptionsWithCompletion(_ completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func finishTransactionWithPurchaseId(_ purchaseId: Swift.String, productId: Swift.String, isConsumable: Swift.Bool, completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getPendingTransactionsIOSWithCompletion(_ completion: @escaping ([Any]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func clearTransactionIOSWithCompletion(_ completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getReceiptDataIOSWithCompletion(_ completion: @escaping (Swift.String?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func verifyPurchaseWithSku(_ sku: Swift.String, completion: @escaping ([Swift.String : Any]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func verifyPurchaseWithProviderObjC(provider: Swift.String, apiKey: Swift.String?, jws: Swift.String?, completion: @escaping ([Swift.String : Any]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getStorefrontWithCompletion(_ completion: @escaping (Swift.String?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getStorefrontIOSWithCompletion(_ completion: @escaping (Swift.String?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getActiveSubscriptionsWithCompletion(_ completion: @escaping ([Any]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func hasActiveSubscriptionsWithCompletion(_ completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func subscriptionStatusIOSWithSku(_ sku: Swift.String, completion: @escaping ([Any]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func currentEntitlementIOSWithSku(_ sku: Swift.String, completion: @escaping (Any?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func latestTransactionIOSWithSku(_ sku: Swift.String, completion: @escaping (Any?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func beginRefundRequestIOSWithSku(_ sku: Swift.String, completion: @escaping (Swift.String?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func isEligibleForIntroOfferIOSWithGroupID(_ groupID: Swift.String, completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func isTransactionVerifiedIOSWithSku(_ sku: Swift.String, completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getTransactionJwsIOSWithSku(_ sku: Swift.String, completion: @escaping (Swift.String?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(iOS 16.0, macOS 14.0, tvOS 16.0, watchOS 9.0, *)
+  @objc final public func getAppTransactionIOSWithCompletion(_ completion: @escaping (Any?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func presentCodeRedemptionSheetIOSWithCompletion(_ completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func showManageSubscriptionsIOSWithCompletion(_ completion: @escaping ([Any]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(iOS 16.0, macOS 14.0, *)
+  @objc final public func presentExternalPurchaseLinkIOSWithUrl(_ url: Swift.String, completion: @escaping (Any?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(iOS 17.4, macOS 14.4, *)
+  @objc final public func presentExternalPurchaseNoticeSheetIOSWithCompletion(_ completion: @escaping (Any?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(iOS 17.4, macOS 14.4, *)
+  @objc final public func canPresentExternalPurchaseNoticeIOSWithCompletion(_ completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(iOS 18.1, macOS 15.1, tvOS 18.1, watchOS 11.1, visionOS 2.1, *)
+  @objc final public func isEligibleForExternalPurchaseCustomLinkIOSWithCompletion(_ completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(iOS 18.1, macOS 15.1, tvOS 18.1, watchOS 11.1, visionOS 2.1, *)
+  @objc final public func getExternalPurchaseCustomLinkTokenIOSWithTokenType(_ tokenTypeString: Swift.String, completion: @escaping (Any?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(iOS 18.1, macOS 15.1, tvOS 18.1, watchOS 11.1, visionOS 2.1, *)
+  @objc final public func showExternalPurchaseCustomLinkNoticeIOSWithNoticeType(_ noticeTypeString: Swift.String, completion: @escaping (Any?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  @objc final public func addPurchaseUpdatedListener(_ callback: @escaping (Foundation.NSDictionary) -> Swift.Void) -> ObjectiveC.NSObject
+  @objc(addPurchaseUpdatedListener:dedupeTransactionIOS:) final public func addPurchaseUpdatedListener(_ callback: @escaping (Foundation.NSDictionary) -> Swift.Void, dedupeTransactionIOS: Swift.Bool) -> ObjectiveC.NSObject
+  @objc final public func addPurchaseErrorListener(_ callback: @escaping (Foundation.NSDictionary) -> Swift.Void) -> ObjectiveC.NSObject
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func addPromotedProductListener(_ callback: @escaping (Swift.String?) -> Swift.Void) -> ObjectiveC.NSObject
+  #endif
+  @objc final public func addSubscriptionBillingIssueListener(_ callback: @escaping (Foundation.NSDictionary) -> Swift.Void) -> ObjectiveC.NSObject
+  @objc final public func removeListener(_ subscription: ObjectiveC.NSObject)
+  @objc final public func removeAllListenersObjC()
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+@objc(OpenIapModule) final public class OpenIapModule : ObjectiveC.NSObject, OpenIAP.OpenIapModuleProtocol {
+  public static let shared: OpenIAP.OpenIapModule
+  @objc final public class func sharedInstance() -> OpenIAP.OpenIapModule
+  @objc deinit
+  final public func initConnection() async throws -> Swift.Bool
+  final public func endConnection() async throws -> Swift.Bool
+  final public func fetchProducts(_ params: OpenIAP.ProductRequest) async throws -> OpenIAP.FetchProductsResult
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func getPromotedProductIOS() async throws -> OpenIAP.ProductIOS?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func requestPurchase(_ params: OpenIAP.RequestPurchaseProps) async throws -> OpenIAP.RequestPurchaseResult?
+  #endif
+  @available(*, deprecated, message: "Use promotedProductListenerIOS + requestPurchase instead")
+  final public func requestPurchaseOnPromotedProductIOS() async throws -> Swift.Bool
+  final public func restorePurchases() async throws
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func getAvailablePurchases(_ options: OpenIAP.PurchaseOptions?) async throws -> [OpenIAP.Purchase]
+  #endif
+  final public func getAllTransactionsIOS() async throws -> [OpenIAP.PurchaseIOS]
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func finishTransaction(purchase: OpenIAP.PurchaseInput, isConsumable: Swift.Bool?) async throws
+  #endif
+  final public func getPendingTransactionsIOS() async throws -> [OpenIAP.PurchaseIOS]
+  final public func clearTransactionIOS() async throws -> Swift.Bool
+  final public func isTransactionVerifiedIOS(sku: Swift.String) async throws -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func getTransactionJwsIOS(sku: Swift.String) async throws -> Swift.String?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func getReceiptDataIOS() async throws -> Swift.String?
+  #endif
+  @available(*, deprecated, message: "Use verifyPurchase")
+  final public func validateReceiptIOS(_ props: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResultIOS
+  @available(*, deprecated, message: "Use verifyPurchase")
+  final public func validateReceipt(_ props: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResult
+  final public func verifyPurchase(_ props: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResult
+  final public func verifyPurchaseWithProvider(_ props: OpenIAP.VerifyPurchaseWithProviderProps) async throws -> OpenIAP.VerifyPurchaseWithProviderResult
+  final public func getStorefront() async throws -> Swift.String
+  final public func getStorefrontIOS() async throws -> Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(iOS 16.0, macOS 14.0, tvOS 16.0, watchOS 9.0, *)
+  final public func getAppTransactionIOS() async throws -> OpenIAP.AppTransaction?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func getActiveSubscriptions(_ subscriptionIds: [Swift.String]?) async throws -> [OpenIAP.ActiveSubscription]
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func hasActiveSubscriptions(_ subscriptionIds: [Swift.String]?) async throws -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func deepLinkToSubscriptions(_ options: OpenIAP.DeepLinkOptions?) async throws
+  #endif
+  final public func subscriptionStatusIOS(sku: Swift.String) async throws -> [OpenIAP.SubscriptionStatusIOS]
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func currentEntitlementIOS(sku: Swift.String) async throws -> OpenIAP.PurchaseIOS?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func latestTransactionIOS(sku: Swift.String) async throws -> OpenIAP.PurchaseIOS?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func beginRefundRequestIOS(sku: Swift.String) async throws -> Swift.String?
+  #endif
+  final public func isEligibleForIntroOfferIOS(groupID: Swift.String) async throws -> Swift.Bool
+  final public func syncIOS() async throws -> Swift.Bool
+  final public func presentCodeRedemptionSheetIOS() async throws -> Swift.Bool
+  final public func showManageSubscriptionsIOS() async throws -> [OpenIAP.PurchaseIOS]
+  final public func canPresentExternalPurchaseNoticeIOS() async throws -> Swift.Bool
+  final public func presentExternalPurchaseNoticeSheetIOS() async throws -> OpenIAP.ExternalPurchaseNoticeResultIOS
+  final public func presentExternalPurchaseLinkIOS(_ url: Swift.String) async throws -> OpenIAP.ExternalPurchaseLinkResultIOS
+  final public func isEligibleForExternalPurchaseCustomLinkIOS() async throws -> Swift.Bool
+  final public func getExternalPurchaseCustomLinkTokenIOS(_ tokenType: OpenIAP.ExternalPurchaseCustomLinkTokenTypeIOS) async throws -> OpenIAP.ExternalPurchaseCustomLinkTokenResultIOS
+  final public func showExternalPurchaseCustomLinkNoticeIOS(_ noticeType: OpenIAP.ExternalPurchaseCustomLinkNoticeTypeIOS) async throws -> OpenIAP.ExternalPurchaseCustomLinkNoticeResultIOS
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func purchaseUpdatedListener(_ listener: @escaping OpenIAP.PurchaseUpdatedListener, options: OpenIAP.PurchaseUpdatedListenerOptions? = nil) -> OpenIAP.Subscription
+  #endif
+  final public func purchaseErrorListener(_ listener: @escaping OpenIAP.PurchaseErrorListener) -> OpenIAP.Subscription
+  final public func promotedProductListenerIOS(_ listener: @escaping OpenIAP.PromotedProductListener) -> OpenIAP.Subscription
+  final public func subscriptionBillingIssueListener(_ listener: @escaping OpenIAP.SubscriptionBillingIssueListener) -> OpenIAP.Subscription
+  final public func removeListener(_ subscription: OpenIAP.Subscription)
+  final public func removeAllListeners()
+}
+extension OpenIAP.OpenIapModule : StoreKit.SKPaymentTransactionObserver {
+  @objc final public func paymentQueue(_ queue: StoreKit.SKPaymentQueue, updatedTransactions transactions: [StoreKit.SKPaymentTransaction])
+  @objc final public func paymentQueue(_ queue: StoreKit.SKPaymentQueue, shouldAddStorePayment payment: StoreKit.SKPayment, for product: StoreKit.SKProduct) -> Swift.Bool
+}
+public protocol IosPropsProtocol {
+  var sku: Swift.String { get }
+  #if compiler(>=5.3) && $NonescapableTypes
+  var quantity: Swift.Int? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  var appAccountToken: Swift.String? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  var withOffer: OpenIAP.DiscountOfferInputIOS? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  var advancedCommerceData: Swift.String? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  var andDangerouslyFinishTransactionAutomatically: Swift.Bool? { get }
+  #endif
+}
+extension OpenIAP.RequestPurchaseIosProps : OpenIAP.IosPropsProtocol {
+}
+extension OpenIAP.RequestSubscriptionIosProps : OpenIAP.IosPropsProtocol {
+}
+@available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+public typealias PurchaseUpdatedListener = @Sendable (OpenIAP.Purchase) -> Swift.Void
+@available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+public typealias PurchaseErrorListener = @Sendable (OpenIAP.PurchaseError) -> Swift.Void
+@available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+public typealias PromotedProductListener = @Sendable (Swift.String) -> Swift.Void
+@available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+public typealias SubscriptionBillingIssueListener = @Sendable (OpenIAP.Purchase) -> Swift.Void
+@available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+public protocol OpenIapModuleProtocol {
+  func initConnection() async throws -> Swift.Bool
+  func endConnection() async throws -> Swift.Bool
+  func fetchProducts(_ params: OpenIAP.ProductRequest) async throws -> OpenIAP.FetchProductsResult
+  #if compiler(>=5.3) && $NonescapableTypes
+  func getPromotedProductIOS() async throws -> OpenIAP.ProductIOS?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func requestPurchase(_ params: OpenIAP.RequestPurchaseProps) async throws -> OpenIAP.RequestPurchaseResult?
+  #endif
+  @available(*, deprecated, message: "Use promotedProductListenerIOS + requestPurchase instead")
+  func requestPurchaseOnPromotedProductIOS() async throws -> Swift.Bool
+  func restorePurchases() async throws
+  #if compiler(>=5.3) && $NonescapableTypes
+  func getAvailablePurchases(_ options: OpenIAP.PurchaseOptions?) async throws -> [OpenIAP.Purchase]
+  #endif
+  func getAllTransactionsIOS() async throws -> [OpenIAP.PurchaseIOS]
+  #if compiler(>=5.3) && $NonescapableTypes
+  func finishTransaction(purchase: OpenIAP.PurchaseInput, isConsumable: Swift.Bool?) async throws
+  #endif
+  func getPendingTransactionsIOS() async throws -> [OpenIAP.PurchaseIOS]
+  func clearTransactionIOS() async throws -> Swift.Bool
+  func isTransactionVerifiedIOS(sku: Swift.String) async throws -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  func getTransactionJwsIOS(sku: Swift.String) async throws -> Swift.String?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func currentEntitlementIOS(sku: Swift.String) async throws -> OpenIAP.PurchaseIOS?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func latestTransactionIOS(sku: Swift.String) async throws -> OpenIAP.PurchaseIOS?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func getReceiptDataIOS() async throws -> Swift.String?
+  #endif
+  @available(*, deprecated, message: "Use verifyPurchase")
+  func validateReceiptIOS(_ props: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResultIOS
+  @available(*, deprecated, message: "Use verifyPurchase")
+  func validateReceipt(_ props: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResult
+  func verifyPurchase(_ props: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResult
+  func verifyPurchaseWithProvider(_ props: OpenIAP.VerifyPurchaseWithProviderProps) async throws -> OpenIAP.VerifyPurchaseWithProviderResult
+  func getStorefront() async throws -> Swift.String
+  func getStorefrontIOS() async throws -> Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(iOS 16.0, macOS 14.0, tvOS 16.0, watchOS 9.0, *)
+  func getAppTransactionIOS() async throws -> OpenIAP.AppTransaction?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func getActiveSubscriptions(_ subscriptionIds: [Swift.String]?) async throws -> [OpenIAP.ActiveSubscription]
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func hasActiveSubscriptions(_ subscriptionIds: [Swift.String]?) async throws -> Swift.Bool
+  #endif
+  func subscriptionStatusIOS(sku: Swift.String) async throws -> [OpenIAP.SubscriptionStatusIOS]
+  func isEligibleForIntroOfferIOS(groupID: Swift.String) async throws -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  func beginRefundRequestIOS(sku: Swift.String) async throws -> Swift.String?
+  #endif
+  func syncIOS() async throws -> Swift.Bool
+  func presentCodeRedemptionSheetIOS() async throws -> Swift.Bool
+  func showManageSubscriptionsIOS() async throws -> [OpenIAP.PurchaseIOS]
+  #if compiler(>=5.3) && $NonescapableTypes
+  func deepLinkToSubscriptions(_ options: OpenIAP.DeepLinkOptions?) async throws
+  #endif
+  func canPresentExternalPurchaseNoticeIOS() async throws -> Swift.Bool
+  func presentExternalPurchaseNoticeSheetIOS() async throws -> OpenIAP.ExternalPurchaseNoticeResultIOS
+  func presentExternalPurchaseLinkIOS(_ url: Swift.String) async throws -> OpenIAP.ExternalPurchaseLinkResultIOS
+  func isEligibleForExternalPurchaseCustomLinkIOS() async throws -> Swift.Bool
+  func getExternalPurchaseCustomLinkTokenIOS(_ tokenType: OpenIAP.ExternalPurchaseCustomLinkTokenTypeIOS) async throws -> OpenIAP.ExternalPurchaseCustomLinkTokenResultIOS
+  func showExternalPurchaseCustomLinkNoticeIOS(_ noticeType: OpenIAP.ExternalPurchaseCustomLinkNoticeTypeIOS) async throws -> OpenIAP.ExternalPurchaseCustomLinkNoticeResultIOS
+  #if compiler(>=5.3) && $NonescapableTypes
+  func purchaseUpdatedListener(_ listener: @escaping OpenIAP.PurchaseUpdatedListener, options: OpenIAP.PurchaseUpdatedListenerOptions?) -> OpenIAP.Subscription
+  #endif
+  func purchaseErrorListener(_ listener: @escaping OpenIAP.PurchaseErrorListener) -> OpenIAP.Subscription
+  func promotedProductListenerIOS(_ listener: @escaping OpenIAP.PromotedProductListener) -> OpenIAP.Subscription
+  func subscriptionBillingIssueListener(_ listener: @escaping OpenIAP.SubscriptionBillingIssueListener) -> OpenIAP.Subscription
+  func removeListener(_ subscription: OpenIAP.Subscription)
+  func removeAllListeners()
+}
+extension OpenIAP.OpenIapModuleProtocol {
+  public func verifyPurchaseWithProvider(_ props: OpenIAP.VerifyPurchaseWithProviderProps) async throws -> OpenIAP.VerifyPurchaseWithProviderResult
+  @available(*, deprecated, message: "Use verifyPurchase instead")
+  public func validateReceiptIOS(_ props: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResultIOS
+  @available(*, deprecated, message: "Use verifyPurchase instead")
+  public func validateReceipt(_ props: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResult
+  public func canPresentExternalPurchaseNoticeIOS() async throws -> Swift.Bool
+  public func presentExternalPurchaseNoticeSheetIOS() async throws -> OpenIAP.ExternalPurchaseNoticeResultIOS
+  public func presentExternalPurchaseLinkIOS(_ url: Swift.String) async throws -> OpenIAP.ExternalPurchaseLinkResultIOS
+  public func isEligibleForExternalPurchaseCustomLinkIOS() async throws -> Swift.Bool
+  public func getExternalPurchaseCustomLinkTokenIOS(_ tokenType: OpenIAP.ExternalPurchaseCustomLinkTokenTypeIOS) async throws -> OpenIAP.ExternalPurchaseCustomLinkTokenResultIOS
+  public func showExternalPurchaseCustomLinkNoticeIOS(_ noticeType: OpenIAP.ExternalPurchaseCustomLinkNoticeTypeIOS) async throws -> OpenIAP.ExternalPurchaseCustomLinkNoticeResultIOS
+}
+@available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+public enum OpenIapSerialization {
+  public static func errorCodes() -> [Swift.String : Swift.String]
+  public static func encode<T>(_ value: T) -> [Swift.String : Any] where T : Swift.Encodable
+  public static func decode<Payload, Output>(_ payload: Payload, as type: Output.Type) throws -> Output where Payload : Swift.Encodable, Output : Swift.Decodable
+  public static func decode<Output>(object: Any, as type: Output.Type) throws -> Output where Output : Swift.Decodable
+  public static func productRequest(skus: [Swift.String], type: OpenIAP.ProductQueryType) throws -> OpenIAP.ProductRequest
+  public static func requestPurchaseProps(from object: [Swift.String : Any]) throws -> OpenIAP.RequestPurchaseProps
+  public static func purchaseInput(from object: Any) throws -> OpenIAP.PurchaseInput
+  public static func purchaseOptions(from object: Any) throws -> OpenIAP.PurchaseOptions
+  public static func verifyPurchaseProps(from object: Any) throws -> OpenIAP.VerifyPurchaseProps
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func discountOffer(from dictionary: [Swift.String : Any]) -> OpenIAP.DiscountOfferInputIOS?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func products(_ result: OpenIAP.FetchProductsResult, logger: ((Swift.String) -> Swift.Void)? = nil) -> [[Swift.String : Any]]
+  #endif
+  public static func purchases(_ items: [OpenIAP.Purchase]) -> [[Swift.String : Any]]
+  public static func purchase(_ purchase: OpenIAP.Purchase) -> [Swift.String : Any]
+}
+@available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+@_Concurrency.MainActor final public class OpenIapStore : Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($isConnected) @_Concurrency.MainActor final public var isConnected: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isConnected: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published @_projectedValueProperty($products) @_Concurrency.MainActor final public var products: [OpenIAP.Product] {
+    get
+  }
+  @_Concurrency.MainActor final public var $products: Combine.Published<[OpenIAP.Product]>.Publisher {
+    get
+  }
+  @Combine.Published @_projectedValueProperty($subscriptions) @_Concurrency.MainActor final public var subscriptions: [OpenIAP.ProductSubscription] {
+    get
+  }
+  @_Concurrency.MainActor final public var $subscriptions: Combine.Published<[OpenIAP.ProductSubscription]>.Publisher {
+    get
+  }
+  @Combine.Published @_projectedValueProperty($availablePurchases) @_Concurrency.MainActor final public var availablePurchases: [OpenIAP.Purchase] {
+    get
+  }
+  @_Concurrency.MainActor final public var $availablePurchases: Combine.Published<[OpenIAP.Purchase]>.Publisher {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  @Combine.Published @_projectedValueProperty($currentPurchase) @_Concurrency.MainActor final public var currentPurchase: OpenIAP.Purchase? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public var $currentPurchase: Combine.Published<OpenIAP.Purchase?>.Publisher {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @Combine.Published @_projectedValueProperty($currentPurchaseError) @_Concurrency.MainActor final public var currentPurchaseError: OpenIAP.PurchaseError? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public var $currentPurchaseError: Combine.Published<OpenIAP.PurchaseError?>.Publisher {
+    get
+  }
+  #endif
+  @Combine.Published @_projectedValueProperty($activeSubscriptions) @_Concurrency.MainActor final public var activeSubscriptions: [OpenIAP.ActiveSubscription] {
+    get
+  }
+  @_Concurrency.MainActor final public var $activeSubscriptions: Combine.Published<[OpenIAP.ActiveSubscription]>.Publisher {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  @Combine.Published @_projectedValueProperty($promotedProduct) @_Concurrency.MainActor final public var promotedProduct: Swift.String? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public var $promotedProduct: Combine.Published<Swift.String?>.Publisher {
+    get
+  }
+  #endif
+  @_Concurrency.MainActor final public var iosProducts: [OpenIAP.ProductIOS] {
+    get
+  }
+  @_Concurrency.MainActor final public var iosSubscriptionProducts: [OpenIAP.ProductSubscriptionIOS] {
+    get
+  }
+  @_Concurrency.MainActor final public var iosAvailablePurchases: [OpenIAP.PurchaseIOS] {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public var iosCurrentPurchase: OpenIAP.PurchaseIOS? {
+    get
+  }
+  #endif
+  @Combine.Published @_projectedValueProperty($status) @_Concurrency.MainActor final public var status: OpenIAP.OpenIapStore.IapStatus {
+    get
+    @available(iOS 15.0, tvOS 16.0, watchOS 8.0, macOS 14.0, *)
+    set
+    @available(iOS 15.0, tvOS 16.0, watchOS 8.0, macOS 14.0, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $status: Combine.Published<OpenIAP.OpenIapStore.IapStatus>.Publisher {
+    get
+    @available(iOS 15.0, tvOS 16.0, watchOS 8.0, macOS 14.0, *)
+    set
+  }
+  @_Concurrency.MainActor final public var onPurchaseSuccess: ((OpenIAP.Purchase) -> Swift.Void)?
+  @_Concurrency.MainActor final public var onPurchaseError: ((OpenIAP.PurchaseError) -> Swift.Void)?
+  @_Concurrency.MainActor final public var onPromotedProduct: ((Swift.String) -> Swift.Void)?
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor public init(onPurchaseSuccess: ((OpenIAP.Purchase) -> Swift.Void)? = nil, onPurchaseError: ((OpenIAP.PurchaseError) -> Swift.Void)? = nil, onPromotedProduct: ((Swift.String) -> Swift.Void)? = nil, module: any OpenIAP.OpenIapModuleProtocol = OpenIapModule.shared)
+  #endif
+  @objc deinit
+  @_Concurrency.MainActor final public func initConnection() async throws
+  @_Concurrency.MainActor final public func endConnection() async throws
+  @_Concurrency.MainActor final public func fetchProducts(skus: [Swift.String], type: OpenIAP.ProductQueryType = .all) async throws
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public func getAvailablePurchases(options: OpenIAP.PurchaseOptions? = nil) async throws
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public func requestPurchase(sku: Swift.String, type: OpenIAP.ProductQueryType = .inApp, autoFinish: Swift.Bool? = nil, quantity: Swift.Int? = nil, appAccountToken: Swift.String? = nil, withOffer: OpenIAP.DiscountOfferInputIOS? = nil, advancedCommerceData: Swift.String? = nil) async throws -> OpenIAP.Purchase?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public func requestPurchase(_ params: OpenIAP.RequestPurchaseProps) async throws -> OpenIAP.Purchase?
+  #endif
+  @_Concurrency.MainActor final public func finishTransaction(purchase: OpenIAP.PurchaseIOS, isConsumable: Swift.Bool = false) async throws
+  @_Concurrency.MainActor final public func finishTransaction(purchase: OpenIAP.Purchase, isConsumable: Swift.Bool = false) async throws
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public func getActiveSubscriptions(subscriptionIds: [Swift.String]? = nil) async throws
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public func hasActiveSubscriptions(subscriptionIds: [Swift.String]? = nil) async throws -> Swift.Bool
+  #endif
+  @_Concurrency.MainActor final public func refreshPurchases(forceSync: Swift.Bool = false) async throws
+  @available(*, deprecated, message: "Use verifyPurchase")
+  @_Concurrency.MainActor final public func validateReceipt(sku: Swift.String) async throws -> OpenIAP.VerifyPurchaseResultIOS
+  @_Concurrency.MainActor final public func verifyPurchase(sku: Swift.String) async throws -> OpenIAP.VerifyPurchaseResultIOS
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public func verifyPurchaseWithProvider(_ props: OpenIAP.VerifyPurchaseWithProviderProps) async throws -> OpenIAP.RequestVerifyPurchaseWithIapkitResult?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public func getPromotedProductIOS() async throws -> OpenIAP.ProductIOS?
+  #endif
+  @_Concurrency.MainActor final public func getPendingTransactionsIOS() async throws -> [OpenIAP.PurchaseIOS]
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public func getReceiptDataIOS() async throws -> Swift.String?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public func getTransactionJwsIOS(sku: Swift.String) async throws -> Swift.String?
+  #endif
+  @_Concurrency.MainActor final public func getStorefront() async throws -> Swift.String
+  @_Concurrency.MainActor final public func getStorefrontIOS() async throws -> Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  @available(iOS 16.0, macOS 14.0, tvOS 16.0, watchOS 9.0, *)
+  @_Concurrency.MainActor final public func getAppTransactionIOS() async throws -> OpenIAP.AppTransaction?
+  #endif
+  @_Concurrency.MainActor final public func isEligibleForIntroOfferIOS(groupID: Swift.String) async throws -> Swift.Bool
+  @_Concurrency.MainActor final public func subscriptionStatusIOS(sku: Swift.String) async throws -> [OpenIAP.SubscriptionStatusIOS]
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public func currentEntitlementIOS(sku: Swift.String) async throws -> OpenIAP.PurchaseIOS?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public func latestTransactionIOS(sku: Swift.String) async throws -> OpenIAP.PurchaseIOS?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public func beginRefundRequestIOS(sku: Swift.String) async throws -> Swift.String?
+  #endif
+  @_Concurrency.MainActor final public func isTransactionVerifiedIOS(sku: Swift.String) async throws -> Swift.Bool
+  @_Concurrency.MainActor final public func syncIOS() async throws -> Swift.Bool
+  @_Concurrency.MainActor final public func presentCodeRedemptionSheetIOS() async throws
+  @_Concurrency.MainActor final public func showManageSubscriptionsIOS() async throws
+  @_Concurrency.MainActor final public func deepLinkToSubscriptionsIOS() async throws
+  @_Concurrency.MainActor final public func canPresentExternalPurchaseNoticeIOS() async throws -> Swift.Bool
+  @_Concurrency.MainActor final public func presentExternalPurchaseNoticeSheetIOS() async throws -> OpenIAP.ExternalPurchaseNoticeResultIOS
+  @_Concurrency.MainActor final public func presentExternalPurchaseLinkIOS(_ url: Swift.String) async throws -> OpenIAP.ExternalPurchaseLinkResultIOS
+  @_Concurrency.MainActor final public func isEligibleForExternalPurchaseCustomLinkIOS() async throws -> Swift.Bool
+  @_Concurrency.MainActor final public func getExternalPurchaseCustomLinkTokenIOS(_ tokenType: OpenIAP.ExternalPurchaseCustomLinkTokenTypeIOS) async throws -> OpenIAP.ExternalPurchaseCustomLinkTokenResultIOS
+  @_Concurrency.MainActor final public func showExternalPurchaseCustomLinkNoticeIOS(_ noticeType: OpenIAP.ExternalPurchaseCustomLinkNoticeTypeIOS) async throws -> OpenIAP.ExternalPurchaseCustomLinkNoticeResultIOS
+  @_Concurrency.MainActor final public func clearTransactionIOS() async throws
+  @_Concurrency.MainActor final public func resetEphemeralState()
+  @available(iOS 15.0, tvOS 16.0, watchOS 8.0, macOS 14.0, *)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+}
+@available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+extension OpenIAP.OpenIapStore {
+  public struct IapStatus {
+    public var loadings: OpenIAP.OpenIapStore.LoadingStates
+    public var lastPurchaseResult: OpenIAP.OpenIapStore.PurchaseResultData?
+    public var lastError: OpenIAP.OpenIapStore.ErrorData?
+    public var currentOperation: OpenIAP.OpenIapStore.IapOperation?
+    public var operationHistory: [OpenIAP.OpenIapStore.IapOperation]
+    public init()
+    public func isPurchasing(_ productId: Swift.String) -> Swift.Bool
+    public var isLoading: Swift.Bool {
+      get
+    }
+    public mutating func addToHistory(_ operation: OpenIAP.OpenIapStore.IapOperation)
+    public mutating func reset()
+  }
+  public struct LoadingStates {
+    public var initConnection: Swift.Bool
+    public var fetchProducts: Swift.Bool
+    public var restorePurchases: Swift.Bool
+    public var purchasing: Swift.Set<Swift.String>
+    public init()
+  }
+  public struct PurchaseResultData {
+    public let productId: Swift.String
+    public let transactionId: Swift.String
+    public let timestamp: Foundation.Date
+    public let message: Swift.String
+    public init(productId: Swift.String, transactionId: Swift.String, timestamp: Foundation.Date = Date(), message: Swift.String)
+  }
+  public struct ErrorData {
+    public let code: Swift.String
+    public let message: Swift.String
+    public let productId: Swift.String?
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init(code: Swift.String, message: Swift.String, productId: Swift.String?)
+    #endif
+  }
+  public enum IapOperation : Swift.String {
+    case initConnection
+    case fetchProducts
+    case restorePurchases
+    case requestPurchase
+    case finishTransaction
+    case verifyPurchase
+    case custom
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    @available(iOS 15.0, tvOS 16.0, watchOS 8.0, macOS 14.0, *)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+public struct OpenIapVersion {
+  public static var current: Swift.String {
+    get
+  }
+  public static var specVersion: Swift.String {
+    get
+  }
+  @available(*, deprecated, renamed: "specVersion")
+  public static var gqlVersion: Swift.String {
+    get
+  }
+}
+public enum OpenIapVersionInfo {
+  public static var sdkVersion: Swift.String {
+    get
+  }
+  @available(*, deprecated, renamed: "specVersion")
+  public static var gqlVersion: Swift.String {
+    get
+  }
+}
+@available(*, deprecated, message: "Use VerifyPurchaseProps instead")
+public typealias ReceiptValidationProps = OpenIAP.VerifyPurchaseProps
+@available(*, deprecated, message: "Use VerifyPurchaseResult instead")
+public typealias ReceiptValidationResult = OpenIAP.VerifyPurchaseResult
+@available(*, deprecated, message: "Use VerifyPurchaseResultIOS instead")
+public typealias ReceiptValidationResultIOS = OpenIAP.VerifyPurchaseResultIOS
+@objc final public class Subscription : ObjectiveC.NSObject {
+  final public let id: Foundation.UUID
+  final public let eventType: OpenIAP.IapEvent
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(eventType: OpenIAP.IapEvent, onRemove: (() -> Swift.Void)? = nil)
+  #endif
+  @objc deinit
+}
+public typealias OpenIapErrorCode = OpenIAP.ErrorCode
+public typealias OpenIapEvent = OpenIAP.IapEvent
+public typealias OpenIapPlatform = OpenIAP.IapPlatform
+public enum AlternativeBillingModeAndroid : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case none
+  case userChoice
+  case alternativeOnly
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.AlternativeBillingModeAndroid]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.AlternativeBillingModeAndroid] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum BillingProgramAndroid : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case unspecified
+  case userChoiceBilling
+  case externalContentLink
+  case externalOffer
+  case externalPayments
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.BillingProgramAndroid]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.BillingProgramAndroid] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum DeveloperBillingLaunchModeAndroid : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case unspecified
+  case launchInExternalBrowserOrApp
+  case callerWillLaunchLink
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.DeveloperBillingLaunchModeAndroid]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.DeveloperBillingLaunchModeAndroid] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum DiscountOfferType : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case introductory
+  case promotional
+  case oneTime
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.DiscountOfferType]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.DiscountOfferType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ErrorCode : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case unknown
+  case userCancelled
+  case userError
+  case itemUnavailable
+  case remoteError
+  case networkError
+  case serviceError
+  case receiptFailed
+  case receiptFinished
+  case receiptFinishedFailed
+  case purchaseVerificationFailed
+  case purchaseVerificationFinished
+  case purchaseVerificationFinishFailed
+  case notPrepared
+  case notEnded
+  case alreadyOwned
+  case developerError
+  case billingResponseJsonParseError
+  case deferredPayment
+  case interrupted
+  case iapNotAvailable
+  case purchaseError
+  case syncError
+  case transactionValidationFailed
+  case activityUnavailable
+  case alreadyPrepared
+  case pending
+  case connectionClosed
+  case initConnection
+  case serviceDisconnected
+  case serviceTimeout
+  case queryProduct
+  case skuNotFound
+  case skuOfferMismatch
+  case itemNotOwned
+  case billingUnavailable
+  case featureNotSupported
+  case emptySkuList
+  case duplicatePurchase
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.ErrorCode]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.ErrorCode] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ExternalLinkLaunchModeAndroid : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case unspecified
+  case launchInExternalBrowserOrApp
+  case callerWillLaunchLink
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.ExternalLinkLaunchModeAndroid]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.ExternalLinkLaunchModeAndroid] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ExternalLinkTypeAndroid : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case unspecified
+  case linkToDigitalContentOffer
+  case linkToAppDownload
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.ExternalLinkTypeAndroid]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.ExternalLinkTypeAndroid] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ExternalPurchaseCustomLinkNoticeTypeIOS : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case browser
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.ExternalPurchaseCustomLinkNoticeTypeIOS]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.ExternalPurchaseCustomLinkNoticeTypeIOS] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ExternalPurchaseCustomLinkTokenTypeIOS : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case acquisition
+  case services
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.ExternalPurchaseCustomLinkTokenTypeIOS]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.ExternalPurchaseCustomLinkTokenTypeIOS] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ExternalPurchaseNoticeAction : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case `continue`
+  case dismissed
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.ExternalPurchaseNoticeAction]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.ExternalPurchaseNoticeAction] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum IapEvent : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case purchaseUpdated
+  case purchaseError
+  case promotedProductIos
+  case userChoiceBillingAndroid
+  case developerProvidedBillingAndroid
+  case subscriptionBillingIssue
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.IapEvent]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.IapEvent] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum IapkitPurchaseState : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case entitled
+  case pendingAcknowledgment
+  case pending
+  case canceled
+  case expired
+  case readyToConsume
+  case consumed
+  case unknown
+  case inauthentic
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.IapkitPurchaseState]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.IapkitPurchaseState] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum IapPlatform : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case ios
+  case android
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.IapPlatform]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.IapPlatform] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum IapStore : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case unknown
+  case apple
+  case google
+  case horizon
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.IapStore]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.IapStore] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum PaymentMode : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case freeTrial
+  case payAsYouGo
+  case payUpFront
+  case unknown
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.PaymentMode]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.PaymentMode] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum PaymentModeIOS : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case empty
+  case freeTrial
+  case payAsYouGo
+  case payUpFront
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.PaymentModeIOS]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.PaymentModeIOS] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ProductQueryType : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case inApp
+  case subs
+  case all
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.ProductQueryType]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.ProductQueryType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ProductStatusAndroid : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case ok
+  case notFound
+  case noOffersAvailable
+  case unknown
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.ProductStatusAndroid]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.ProductStatusAndroid] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ProductType : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case inApp
+  case subs
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.ProductType]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.ProductType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ProductTypeIOS : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case consumable
+  case nonConsumable
+  case autoRenewableSubscription
+  case nonRenewingSubscription
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.ProductTypeIOS]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.ProductTypeIOS] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum PurchaseState : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case pending
+  case purchased
+  case unknown
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.PurchaseState]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.PurchaseState] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum PurchaseVerificationProvider : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case iapkit
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.PurchaseVerificationProvider]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.PurchaseVerificationProvider] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SubResponseCodeAndroid : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case noApplicableSubResponseCode
+  case paymentDeclinedDueToInsufficientFunds
+  case userIneligible
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.SubResponseCodeAndroid]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.SubResponseCodeAndroid] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SubscriptionOfferTypeIOS : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case introductory
+  case promotional
+  case winBack
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.SubscriptionOfferTypeIOS]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.SubscriptionOfferTypeIOS] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SubscriptionPeriodIOS : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case day
+  case week
+  case month
+  case year
+  case empty
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.SubscriptionPeriodIOS]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.SubscriptionPeriodIOS] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SubscriptionPeriodUnit : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case day
+  case week
+  case month
+  case year
+  case unknown
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.SubscriptionPeriodUnit]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.SubscriptionPeriodUnit] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SubscriptionReplacementModeAndroid : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case unknownReplacementMode
+  case withTimeProration
+  case chargeProratedPrice
+  case chargeFullPrice
+  case withoutProration
+  case deferred
+  case keepExisting
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.SubscriptionReplacementModeAndroid]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.SubscriptionReplacementModeAndroid] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SubscriptionState : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case active
+  case inGracePeriod
+  case inBillingRetry
+  case expired
+  case revoked
+  case refunded
+  case paused
+  case unknown
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.SubscriptionState]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.SubscriptionState] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum WebhookCancellationReason : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case userCanceled
+  case billingError
+  case priceIncreaseDeclined
+  case productUnavailable
+  case refunded
+  case other
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.WebhookCancellationReason]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.WebhookCancellationReason] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum WebhookEventEnvironment : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case production
+  case sandbox
+  case xcode
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.WebhookEventEnvironment]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.WebhookEventEnvironment] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum WebhookEventSource : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case appleAppStoreServerNotificationsV2
+  case googlePlayRealTimeDeveloperNotifications
+  case metaHorizonReconciler
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.WebhookEventSource]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.WebhookEventSource] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum WebhookEventType : Swift.String, Swift.Codable, Swift.CaseIterable {
+  case subscriptionStarted
+  case subscriptionRenewed
+  case subscriptionExpired
+  case subscriptionInGracePeriod
+  case subscriptionInBillingRetry
+  case subscriptionRecovered
+  case subscriptionCanceled
+  case subscriptionUncanceled
+  case subscriptionRevoked
+  case subscriptionPriceChange
+  case subscriptionProductChanged
+  case subscriptionPaused
+  case subscriptionResumed
+  case purchaseRefunded
+  case purchaseConsumptionRequest
+  case testNotification
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [OpenIAP.WebhookEventType]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OpenIAP.WebhookEventType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol ProductCommon : Swift.Decodable, Swift.Encodable {
+  var currency: Swift.String { get }
+  #if compiler(>=5.3) && $NonescapableTypes
+  var debugDescription: Swift.String? { get }
+  #endif
+  var description: Swift.String { get }
+  #if compiler(>=5.3) && $NonescapableTypes
+  var displayName: Swift.String? { get }
+  #endif
+  var displayPrice: Swift.String { get }
+  var id: Swift.String { get }
+  var platform: OpenIAP.IapPlatform { get }
+  #if compiler(>=5.3) && $NonescapableTypes
+  var price: Swift.Double? { get }
+  #endif
+  var title: Swift.String { get }
+  var type: OpenIAP.ProductType { get }
+}
+public protocol PurchaseCommon : Swift.Decodable, Swift.Encodable {
+  #if compiler(>=5.3) && $NonescapableTypes
+  var currentPlanId: Swift.String? { get }
+  #endif
+  var id: Swift.String { get }
+  #if compiler(>=5.3) && $NonescapableTypes
+  var ids: [Swift.String]? { get }
+  #endif
+  var isAutoRenewing: Swift.Bool { get }
+  var platform: OpenIAP.IapPlatform { get }
+  var productId: Swift.String { get }
+  var purchaseState: OpenIAP.PurchaseState { get }
+  #if compiler(>=5.3) && $NonescapableTypes
+  var purchaseToken: Swift.String? { get }
+  #endif
+  var quantity: Swift.Int { get }
+  var store: OpenIAP.IapStore { get }
+  var transactionDate: Swift.Double { get }
+}
+public struct ActiveSubscription : Swift.Codable {
+  public var autoRenewingAndroid: Swift.Bool?
+  public var basePlanIdAndroid: Swift.String?
+  public var currentPlanId: Swift.String?
+  public var daysUntilExpirationIOS: Swift.Double?
+  public var environmentIOS: Swift.String?
+  public var expirationDateIOS: Swift.Double?
+  public var isActive: Swift.Bool
+  public var productId: Swift.String
+  public var purchaseToken: Swift.String?
+  public var purchaseTokenAndroid: Swift.String?
+  public var renewalInfoIOS: OpenIAP.RenewalInfoIOS?
+  public var transactionDate: Swift.Double
+  public var transactionId: Swift.String
+  public var willExpireSoon: Swift.Bool?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AdvancedCommerceInfoIOS : Swift.Codable {
+  public var description: Swift.String?
+  public var displayName: Swift.String?
+  public var estimatedTax: Swift.String?
+  public var items: [OpenIAP.AdvancedCommerceItemIOS]
+  public var requestReferenceId: Swift.String?
+  public var taxCode: Swift.String?
+  public var taxExclusivePrice: Swift.String?
+  public var taxRate: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AdvancedCommerceItemDetailsIOS : Swift.Codable {
+  public var jsonRepresentation: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AdvancedCommerceItemIOS : Swift.Codable {
+  public var details: OpenIAP.AdvancedCommerceItemDetailsIOS?
+  public var refunds: [OpenIAP.AdvancedCommerceRefundIOS]?
+  public var revocationDate: Swift.Double?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AdvancedCommerceRefundIOS : Swift.Codable {
+  public var jsonRepresentation: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AppTransaction : Swift.Codable {
+  public var appId: Swift.Double
+  public var appTransactionId: Swift.String?
+  public var appVersion: Swift.String
+  public var appVersionId: Swift.Double
+  public var bundleId: Swift.String
+  public var deviceVerification: Swift.String
+  public var deviceVerificationNonce: Swift.String
+  public var environment: Swift.String
+  public var originalAppVersion: Swift.String
+  public var originalPlatform: Swift.String?
+  public var originalPurchaseDate: Swift.Double
+  public var preorderDate: Swift.Double?
+  public var signedDate: Swift.Double
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct BillingProgramAvailabilityResultAndroid : Swift.Codable {
+  public var billingProgram: OpenIAP.BillingProgramAndroid
+  public var isAvailable: Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct BillingProgramReportingDetailsAndroid : Swift.Codable {
+  public var billingProgram: OpenIAP.BillingProgramAndroid
+  public var externalTransactionToken: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct BillingResultAndroid : Swift.Codable {
+  public var debugMessage: Swift.String?
+  public var responseCode: Swift.Int
+  public var subResponseCode: OpenIAP.SubResponseCodeAndroid?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DeveloperProvidedBillingDetailsAndroid : Swift.Codable {
+  public var externalTransactionToken: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DiscountAmountAndroid : Swift.Codable {
+  public var discountAmountMicros: Swift.String
+  public var formattedDiscountAmount: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DiscountDisplayInfoAndroid : Swift.Codable {
+  public var discountAmount: OpenIAP.DiscountAmountAndroid?
+  public var percentageDiscount: Swift.Int?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DiscountIOS : Swift.Codable {
+  public var identifier: Swift.String
+  public var localizedPrice: Swift.String?
+  public var numberOfPeriods: Swift.Int
+  public var paymentMode: OpenIAP.PaymentModeIOS
+  public var price: Swift.String
+  public var priceAmount: Swift.Double
+  public var subscriptionPeriod: Swift.String
+  public var type: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DiscountOffer : Swift.Codable {
+  public var currency: Swift.String
+  public var discountAmountMicrosAndroid: Swift.String?
+  public var displayPrice: Swift.String
+  public var formattedDiscountAmountAndroid: Swift.String?
+  public var fullPriceMicrosAndroid: Swift.String?
+  public var id: Swift.String?
+  public var limitedQuantityInfoAndroid: OpenIAP.LimitedQuantityInfoAndroid?
+  public var offerTagsAndroid: [Swift.String]?
+  public var offerTokenAndroid: Swift.String?
+  public var percentageDiscountAndroid: Swift.Int?
+  public var preorderDetailsAndroid: OpenIAP.PreorderDetailsAndroid?
+  public var price: Swift.Double
+  public var purchaseOptionIdAndroid: Swift.String?
+  public var rentalDetailsAndroid: OpenIAP.RentalDetailsAndroid?
+  public var type: OpenIAP.DiscountOfferType
+  public var validTimeWindowAndroid: OpenIAP.ValidTimeWindowAndroid?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DiscountOfferIOS : Swift.Codable {
+  public var identifier: Swift.String
+  public var keyIdentifier: Swift.String
+  public var nonce: Swift.String
+  public var signature: Swift.String
+  public var timestamp: Swift.Double
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct EntitlementIOS : Swift.Codable {
+  public var jsonRepresentation: Swift.String
+  public var sku: Swift.String
+  public var transactionId: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ExternalOfferAvailabilityResultAndroid : Swift.Codable {
+  public var isAvailable: Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ExternalOfferReportingDetailsAndroid : Swift.Codable {
+  public var externalTransactionToken: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ExternalPurchaseCustomLinkNoticeResultIOS : Swift.Codable {
+  public var continued: Swift.Bool
+  public var error: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ExternalPurchaseCustomLinkTokenResultIOS : Swift.Codable {
+  public var error: Swift.String?
+  public var token: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ExternalPurchaseLinkResultIOS : Swift.Codable {
+  public var error: Swift.String?
+  public var success: Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ExternalPurchaseNoticeResultIOS : Swift.Codable {
+  public var error: Swift.String?
+  public var externalPurchaseToken: Swift.String?
+  public var result: OpenIAP.ExternalPurchaseNoticeAction
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum FetchProductsResult {
+  case all([OpenIAP.ProductOrSubscription]?)
+  case products([OpenIAP.Product]?)
+  case subscriptions([OpenIAP.ProductSubscription]?)
+}
+public struct InstallmentPlanDetailsAndroid : Swift.Codable {
+  public var commitmentPaymentsCount: Swift.Int
+  public var subsequentCommitmentPaymentsCount: Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LimitedQuantityInfoAndroid : Swift.Codable {
+  public var maximumQuantity: Swift.Int
+  public var remainingQuantity: Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PendingPurchaseUpdateAndroid : Swift.Codable {
+  public var products: [Swift.String]
+  public var purchaseToken: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PreorderDetailsAndroid : Swift.Codable {
+  public var preorderPresaleEndTimeMillis: Swift.String
+  public var preorderReleaseTimeMillis: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PricingPhaseAndroid : Swift.Codable {
+  public var billingCycleCount: Swift.Int
+  public var billingPeriod: Swift.String
+  public var formattedPrice: Swift.String
+  public var priceAmountMicros: Swift.String
+  public var priceCurrencyCode: Swift.String
+  public var recurrenceMode: Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PricingPhasesAndroid : Swift.Codable {
+  public var pricingPhaseList: [OpenIAP.PricingPhaseAndroid]
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ProductAndroid : Swift.Codable, OpenIAP.ProductCommon {
+  public var currency: Swift.String
+  public var debugDescription: Swift.String?
+  public var description: Swift.String
+  public var discountOffers: [OpenIAP.DiscountOffer]?
+  public var displayName: Swift.String?
+  public var displayPrice: Swift.String
+  public var id: Swift.String
+  public var nameAndroid: Swift.String
+  public var oneTimePurchaseOfferDetailsAndroid: [OpenIAP.ProductAndroidOneTimePurchaseOfferDetail]?
+  public var platform: OpenIAP.IapPlatform
+  public var price: Swift.Double?
+  public var productStatusAndroid: OpenIAP.ProductStatusAndroid?
+  public var subscriptionOfferDetailsAndroid: [OpenIAP.ProductSubscriptionAndroidOfferDetails]?
+  public var subscriptionOffers: [OpenIAP.SubscriptionOffer]?
+  public var title: Swift.String
+  public var type: OpenIAP.ProductType
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ProductAndroidOneTimePurchaseOfferDetail : Swift.Codable {
+  public var discountDisplayInfo: OpenIAP.DiscountDisplayInfoAndroid?
+  public var formattedPrice: Swift.String
+  public var fullPriceMicros: Swift.String?
+  public var limitedQuantityInfo: OpenIAP.LimitedQuantityInfoAndroid?
+  public var offerId: Swift.String?
+  public var offerTags: [Swift.String]
+  public var offerToken: Swift.String
+  public var preorderDetailsAndroid: OpenIAP.PreorderDetailsAndroid?
+  public var priceAmountMicros: Swift.String
+  public var priceCurrencyCode: Swift.String
+  public var purchaseOptionId: Swift.String?
+  public var rentalDetailsAndroid: OpenIAP.RentalDetailsAndroid?
+  public var validTimeWindow: OpenIAP.ValidTimeWindowAndroid?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ProductIOS : Swift.Codable, OpenIAP.ProductCommon {
+  public var currency: Swift.String
+  public var debugDescription: Swift.String?
+  public var description: Swift.String
+  public var displayName: Swift.String?
+  public var displayNameIOS: Swift.String
+  public var displayPrice: Swift.String
+  public var id: Swift.String
+  public var isFamilyShareableIOS: Swift.Bool
+  public var jsonRepresentationIOS: Swift.String
+  public var platform: OpenIAP.IapPlatform
+  public var price: Swift.Double?
+  public var subscriptionInfoIOS: OpenIAP.SubscriptionInfoIOS?
+  public var subscriptionOffers: [OpenIAP.SubscriptionOffer]?
+  public var title: Swift.String
+  public var type: OpenIAP.ProductType
+  public var typeIOS: OpenIAP.ProductTypeIOS
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ProductSubscriptionAndroid : Swift.Codable, OpenIAP.ProductCommon {
+  public var currency: Swift.String
+  public var debugDescription: Swift.String?
+  public var description: Swift.String
+  public var discountOffers: [OpenIAP.DiscountOffer]?
+  public var displayName: Swift.String?
+  public var displayPrice: Swift.String
+  public var id: Swift.String
+  public var nameAndroid: Swift.String
+  public var oneTimePurchaseOfferDetailsAndroid: [OpenIAP.ProductAndroidOneTimePurchaseOfferDetail]?
+  public var platform: OpenIAP.IapPlatform
+  public var price: Swift.Double?
+  public var productStatusAndroid: OpenIAP.ProductStatusAndroid?
+  public var subscriptionOfferDetailsAndroid: [OpenIAP.ProductSubscriptionAndroidOfferDetails]
+  public var subscriptionOffers: [OpenIAP.SubscriptionOffer]
+  public var title: Swift.String
+  public var type: OpenIAP.ProductType
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ProductSubscriptionAndroidOfferDetails : Swift.Codable {
+  public var basePlanId: Swift.String
+  public var installmentPlanDetails: OpenIAP.InstallmentPlanDetailsAndroid?
+  public var offerId: Swift.String?
+  public var offerTags: [Swift.String]
+  public var offerToken: Swift.String
+  public var pricingPhases: OpenIAP.PricingPhasesAndroid
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ProductSubscriptionIOS : Swift.Codable, OpenIAP.ProductCommon {
+  public var currency: Swift.String
+  public var debugDescription: Swift.String?
+  public var description: Swift.String
+  public var discountsIOS: [OpenIAP.DiscountIOS]?
+  public var displayName: Swift.String?
+  public var displayNameIOS: Swift.String
+  public var displayPrice: Swift.String
+  public var id: Swift.String
+  public var introductoryPriceAsAmountIOS: Swift.String?
+  public var introductoryPriceIOS: Swift.String?
+  public var introductoryPriceNumberOfPeriodsIOS: Swift.String?
+  public var introductoryPricePaymentModeIOS: OpenIAP.PaymentModeIOS
+  public var introductoryPriceSubscriptionPeriodIOS: OpenIAP.SubscriptionPeriodIOS?
+  public var isFamilyShareableIOS: Swift.Bool
+  public var jsonRepresentationIOS: Swift.String
+  public var platform: OpenIAP.IapPlatform
+  public var price: Swift.Double?
+  public var subscriptionInfoIOS: OpenIAP.SubscriptionInfoIOS?
+  public var subscriptionOffers: [OpenIAP.SubscriptionOffer]?
+  public var subscriptionPeriodNumberIOS: Swift.String?
+  public var subscriptionPeriodUnitIOS: OpenIAP.SubscriptionPeriodIOS?
+  public var title: Swift.String
+  public var type: OpenIAP.ProductType
+  public var typeIOS: OpenIAP.ProductTypeIOS
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PurchaseAndroid : Swift.Codable, OpenIAP.PurchaseCommon {
+  public var autoRenewingAndroid: Swift.Bool?
+  public var currentPlanId: Swift.String?
+  public var dataAndroid: Swift.String?
+  public var developerPayloadAndroid: Swift.String?
+  public var id: Swift.String
+  public var ids: [Swift.String]?
+  public var isAcknowledgedAndroid: Swift.Bool?
+  public var isAutoRenewing: Swift.Bool
+  public var isSuspendedAndroid: Swift.Bool?
+  public var obfuscatedAccountIdAndroid: Swift.String?
+  public var obfuscatedProfileIdAndroid: Swift.String?
+  public var packageNameAndroid: Swift.String?
+  public var pendingPurchaseUpdateAndroid: OpenIAP.PendingPurchaseUpdateAndroid?
+  public var platform: OpenIAP.IapPlatform
+  public var productId: Swift.String
+  public var purchaseState: OpenIAP.PurchaseState
+  public var purchaseToken: Swift.String?
+  public var quantity: Swift.Int
+  public var signatureAndroid: Swift.String?
+  public var store: OpenIAP.IapStore
+  public var transactionDate: Swift.Double
+  public var transactionId: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PurchaseError : Swift.Codable {
+  public var code: OpenIAP.ErrorCode
+  public var debugMessage: Swift.String?
+  public var isEmptyProductList: Swift.Bool?
+  public var message: Swift.String
+  public var productId: Swift.String?
+  public var productIds: [Swift.String]?
+  public var productType: Swift.String?
+  public var responseCode: Swift.Int?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PurchaseIOS : Swift.Codable, OpenIAP.PurchaseCommon {
+  public var advancedCommerceInfoIOS: OpenIAP.AdvancedCommerceInfoIOS?
+  public var appAccountToken: Swift.String?
+  public var appBundleIdIOS: Swift.String?
+  public var countryCodeIOS: Swift.String?
+  public var currencyCodeIOS: Swift.String?
+  public var currencySymbolIOS: Swift.String?
+  public var currentPlanId: Swift.String?
+  public var environmentIOS: Swift.String?
+  public var expirationDateIOS: Swift.Double?
+  public var id: Swift.String
+  public var ids: [Swift.String]?
+  public var isAutoRenewing: Swift.Bool
+  public var isUpgradedIOS: Swift.Bool?
+  public var offerIOS: OpenIAP.PurchaseOfferIOS?
+  public var originalTransactionDateIOS: Swift.Double?
+  public var originalTransactionIdentifierIOS: Swift.String?
+  public var ownershipTypeIOS: Swift.String?
+  public var platform: OpenIAP.IapPlatform
+  public var productId: Swift.String
+  public var purchaseState: OpenIAP.PurchaseState
+  public var purchaseToken: Swift.String?
+  public var quantity: Swift.Int
+  public var quantityIOS: Swift.Int?
+  public var reasonIOS: Swift.String?
+  public var reasonStringRepresentationIOS: Swift.String?
+  public var renewalInfoIOS: OpenIAP.RenewalInfoIOS?
+  public var revocationDateIOS: Swift.Double?
+  public var revocationReasonIOS: Swift.String?
+  public var store: OpenIAP.IapStore
+  public var storefrontCountryCodeIOS: Swift.String?
+  public var subscriptionGroupIdIOS: Swift.String?
+  public var transactionDate: Swift.Double
+  public var transactionId: Swift.String
+  public var transactionReasonIOS: Swift.String?
+  public var webOrderLineItemIdIOS: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PurchaseOfferIOS : Swift.Codable {
+  public var id: Swift.String
+  public var paymentMode: Swift.String
+  public var type: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RefundResultIOS : Swift.Codable {
+  public var message: Swift.String?
+  public var status: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RenewalInfoIOS : Swift.Codable {
+  public var autoRenewPreference: Swift.String?
+  public var expirationReason: Swift.String?
+  public var gracePeriodExpirationDate: Swift.Double?
+  public var isInBillingRetry: Swift.Bool?
+  public var jsonRepresentation: Swift.String?
+  public var pendingUpgradeProductId: Swift.String?
+  public var priceIncreaseStatus: Swift.String?
+  public var renewalDate: Swift.Double?
+  public var renewalOfferId: Swift.String?
+  public var renewalOfferType: Swift.String?
+  public var willAutoRenew: Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RentalDetailsAndroid : Swift.Codable {
+  public var rentalExpirationPeriod: Swift.String?
+  public var rentalPeriod: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum RequestPurchaseResult {
+  case purchase(OpenIAP.Purchase?)
+  case purchases([OpenIAP.Purchase]?)
+}
+public struct RequestVerifyPurchaseWithIapkitResult : Swift.Codable {
+  public var isValid: Swift.Bool
+  public var state: OpenIAP.IapkitPurchaseState
+  public var store: OpenIAP.IapStore
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SubscriptionInfoIOS : Swift.Codable {
+  public var introductoryOffer: OpenIAP.SubscriptionOfferIOS?
+  public var promotionalOffers: [OpenIAP.SubscriptionOfferIOS]?
+  public var subscriptionGroupId: Swift.String
+  public var subscriptionPeriod: OpenIAP.SubscriptionPeriodValueIOS
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SubscriptionOffer : Swift.Codable {
+  public var basePlanIdAndroid: Swift.String?
+  public var currency: Swift.String?
+  public var displayPrice: Swift.String
+  public var id: Swift.String
+  public var installmentPlanDetailsAndroid: OpenIAP.InstallmentPlanDetailsAndroid?
+  public var keyIdentifierIOS: Swift.String?
+  public var localizedPriceIOS: Swift.String?
+  public var nonceIOS: Swift.String?
+  public var numberOfPeriodsIOS: Swift.Int?
+  public var offerTagsAndroid: [Swift.String]?
+  public var offerTokenAndroid: Swift.String?
+  public var paymentMode: OpenIAP.PaymentMode?
+  public var period: OpenIAP.SubscriptionPeriod?
+  public var periodCount: Swift.Int?
+  public var price: Swift.Double
+  public var pricingPhasesAndroid: OpenIAP.PricingPhasesAndroid?
+  public var signatureIOS: Swift.String?
+  public var timestampIOS: Swift.Double?
+  public var type: OpenIAP.DiscountOfferType
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SubscriptionOfferIOS : Swift.Codable {
+  public var displayPrice: Swift.String
+  public var id: Swift.String
+  public var paymentMode: OpenIAP.PaymentModeIOS
+  public var period: OpenIAP.SubscriptionPeriodValueIOS
+  public var periodCount: Swift.Int
+  public var price: Swift.Double
+  public var type: OpenIAP.SubscriptionOfferTypeIOS
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SubscriptionPeriod : Swift.Codable {
+  public var unit: OpenIAP.SubscriptionPeriodUnit
+  public var value: Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SubscriptionPeriodValueIOS : Swift.Codable {
+  public var unit: OpenIAP.SubscriptionPeriodIOS
+  public var value: Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SubscriptionStatusIOS : Swift.Codable {
+  public var renewalInfo: OpenIAP.RenewalInfoIOS?
+  public var state: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct UserChoiceBillingDetails : Swift.Codable {
+  public var externalTransactionToken: Swift.String
+  public var products: [Swift.String]
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ValidTimeWindowAndroid : Swift.Codable {
+  public var endTimeMillis: Swift.String
+  public var startTimeMillis: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct VerifyPurchaseResultAndroid : Swift.Codable {
+  public var autoRenewing: Swift.Bool
+  public var betaProduct: Swift.Bool
+  public var cancelDate: Swift.Double?
+  public var cancelReason: Swift.String?
+  public var deferredDate: Swift.Double?
+  public var deferredSku: Swift.String?
+  public var freeTrialEndDate: Swift.Double
+  public var gracePeriodEndDate: Swift.Double
+  public var parentProductId: Swift.String
+  public var productId: Swift.String
+  public var productType: Swift.String
+  public var purchaseDate: Swift.Double
+  public var quantity: Swift.Int
+  public var receiptId: Swift.String
+  public var renewalDate: Swift.Double
+  public var term: Swift.String
+  public var termSku: Swift.String
+  public var testTransaction: Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct VerifyPurchaseResultHorizon : Swift.Codable {
+  public var grantTime: Swift.Double?
+  public var success: Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct VerifyPurchaseResultIOS : Swift.Codable {
+  public var isValid: Swift.Bool
+  public var jwsRepresentation: Swift.String
+  public var latestTransaction: OpenIAP.Purchase?
+  public var receiptData: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct VerifyPurchaseWithProviderError : Swift.Codable {
+  public var code: Swift.String?
+  public var message: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct VerifyPurchaseWithProviderResult : Swift.Codable {
+  public var errors: [OpenIAP.VerifyPurchaseWithProviderError]?
+  public var iapkit: OpenIAP.RequestVerifyPurchaseWithIapkitResult?
+  public var provider: OpenIAP.PurchaseVerificationProvider
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public typealias VoidResult = Swift.Void
+public struct WebhookEvent : Swift.Codable {
+  public var cancellationReason: OpenIAP.WebhookCancellationReason?
+  public var currency: Swift.String?
+  public var environment: OpenIAP.WebhookEventEnvironment
+  public var expiresAt: Swift.Double?
+  public var id: Swift.String
+  public var occurredAt: Swift.Double
+  public var platform: OpenIAP.IapPlatform
+  public var priceAmountMicros: Swift.Double?
+  public var productId: Swift.String?
+  public var projectId: Swift.String
+  public var purchaseToken: Swift.String?
+  public var rawSignedPayload: Swift.String?
+  public var receivedAt: Swift.Double
+  public var renewsAt: Swift.Double?
+  public var source: OpenIAP.WebhookEventSource
+  public var subscriptionState: OpenIAP.SubscriptionState?
+  public var type: OpenIAP.WebhookEventType
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AndroidSubscriptionOfferInput : Swift.Codable {
+  public var offerToken: Swift.String
+  public var sku: Swift.String
+  public init(offerToken: Swift.String, sku: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DeepLinkOptions : Swift.Codable {
+  public var packageNameAndroid: Swift.String?
+  public var skuAndroid: Swift.String?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(packageNameAndroid: Swift.String? = nil, skuAndroid: Swift.String? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DeveloperBillingOptionParamsAndroid : Swift.Codable {
+  public var billingProgram: OpenIAP.BillingProgramAndroid
+  public var launchMode: OpenIAP.DeveloperBillingLaunchModeAndroid
+  public var linkUri: Swift.String
+  public init(billingProgram: OpenIAP.BillingProgramAndroid, launchMode: OpenIAP.DeveloperBillingLaunchModeAndroid, linkUri: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DiscountOfferInputIOS : Swift.Codable {
+  public var identifier: Swift.String
+  public var keyIdentifier: Swift.String
+  public var nonce: Swift.String
+  public var signature: Swift.String
+  public var timestamp: Swift.Double
+  public init(identifier: Swift.String, keyIdentifier: Swift.String, nonce: Swift.String, signature: Swift.String, timestamp: Swift.Double)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct InitConnectionConfig : Swift.Codable {
+  public var alternativeBillingModeAndroid: OpenIAP.AlternativeBillingModeAndroid?
+  public var enableBillingProgramAndroid: OpenIAP.BillingProgramAndroid?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(alternativeBillingModeAndroid: OpenIAP.AlternativeBillingModeAndroid? = nil, enableBillingProgramAndroid: OpenIAP.BillingProgramAndroid? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LaunchExternalLinkParamsAndroid : Swift.Codable {
+  public var billingProgram: OpenIAP.BillingProgramAndroid
+  public var launchMode: OpenIAP.ExternalLinkLaunchModeAndroid
+  public var linkType: OpenIAP.ExternalLinkTypeAndroid
+  public var linkUri: Swift.String
+  public init(billingProgram: OpenIAP.BillingProgramAndroid, launchMode: OpenIAP.ExternalLinkLaunchModeAndroid, linkType: OpenIAP.ExternalLinkTypeAndroid, linkUri: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ProductRequest : Swift.Codable {
+  public var skus: [Swift.String]
+  public var type: OpenIAP.ProductQueryType?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(skus: [Swift.String], type: OpenIAP.ProductQueryType? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PromotionalOfferJWSInputIOS : Swift.Codable {
+  public var jws: Swift.String
+  public var offerId: Swift.String
+  public init(jws: Swift.String, offerId: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public typealias PurchaseInput = OpenIAP.Purchase
+public struct PurchaseOptions : Swift.Codable {
+  public var alsoPublishToEventListenerIOS: Swift.Bool?
+  public var includeSuspendedAndroid: Swift.Bool?
+  public var onlyIncludeActiveItemsIOS: Swift.Bool?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(alsoPublishToEventListenerIOS: Swift.Bool? = nil, includeSuspendedAndroid: Swift.Bool? = nil, onlyIncludeActiveItemsIOS: Swift.Bool? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PurchaseUpdatedListenerOptions : Swift.Codable {
+  public var dedupeTransactionIOS: Swift.Bool?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(dedupeTransactionIOS: Swift.Bool? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RequestPurchaseAndroidProps : Swift.Codable {
+  public var developerBillingOption: OpenIAP.DeveloperBillingOptionParamsAndroid?
+  public var isOfferPersonalized: Swift.Bool?
+  public var obfuscatedAccountId: Swift.String?
+  public var obfuscatedProfileId: Swift.String?
+  public var offerToken: Swift.String?
+  public var skus: [Swift.String]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(developerBillingOption: OpenIAP.DeveloperBillingOptionParamsAndroid? = nil, isOfferPersonalized: Swift.Bool? = nil, obfuscatedAccountId: Swift.String? = nil, obfuscatedProfileId: Swift.String? = nil, offerToken: Swift.String? = nil, skus: [Swift.String])
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RequestPurchaseIosProps : Swift.Codable {
+  public var advancedCommerceData: Swift.String?
+  public var andDangerouslyFinishTransactionAutomatically: Swift.Bool?
+  public var appAccountToken: Swift.String?
+  public var quantity: Swift.Int?
+  public var sku: Swift.String
+  public var withOffer: OpenIAP.DiscountOfferInputIOS?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(advancedCommerceData: Swift.String? = nil, andDangerouslyFinishTransactionAutomatically: Swift.Bool? = nil, appAccountToken: Swift.String? = nil, quantity: Swift.Int? = nil, sku: Swift.String, withOffer: OpenIAP.DiscountOfferInputIOS? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RequestPurchaseProps : Swift.Codable {
+  public var request: OpenIAP.RequestPurchaseProps.Request
+  public var type: OpenIAP.ProductQueryType
+  public var useAlternativeBilling: Swift.Bool?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(request: OpenIAP.RequestPurchaseProps.Request, type: OpenIAP.ProductQueryType? = nil, useAlternativeBilling: Swift.Bool? = nil)
+  #endif
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public enum Request {
+    case purchase(OpenIAP.RequestPurchasePropsByPlatforms)
+    case subscription(OpenIAP.RequestSubscriptionPropsByPlatforms)
+  }
+}
+public struct RequestPurchasePropsByPlatforms : Swift.Codable {
+  public var android: OpenIAP.RequestPurchaseAndroidProps?
+  public var apple: OpenIAP.RequestPurchaseIosProps?
+  public var google: OpenIAP.RequestPurchaseAndroidProps?
+  public var ios: OpenIAP.RequestPurchaseIosProps?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(android: OpenIAP.RequestPurchaseAndroidProps? = nil, apple: OpenIAP.RequestPurchaseIosProps? = nil, google: OpenIAP.RequestPurchaseAndroidProps? = nil, ios: OpenIAP.RequestPurchaseIosProps? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RequestSubscriptionAndroidProps : Swift.Codable {
+  public var developerBillingOption: OpenIAP.DeveloperBillingOptionParamsAndroid?
+  public var isOfferPersonalized: Swift.Bool?
+  public var obfuscatedAccountId: Swift.String?
+  public var obfuscatedProfileId: Swift.String?
+  public var purchaseToken: Swift.String?
+  public var replacementMode: Swift.Int?
+  public var skus: [Swift.String]
+  public var subscriptionOffers: [OpenIAP.AndroidSubscriptionOfferInput]?
+  public var subscriptionProductReplacementParams: OpenIAP.SubscriptionProductReplacementParamsAndroid?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(developerBillingOption: OpenIAP.DeveloperBillingOptionParamsAndroid? = nil, isOfferPersonalized: Swift.Bool? = nil, obfuscatedAccountId: Swift.String? = nil, obfuscatedProfileId: Swift.String? = nil, purchaseToken: Swift.String? = nil, replacementMode: Swift.Int? = nil, skus: [Swift.String], subscriptionOffers: [OpenIAP.AndroidSubscriptionOfferInput]? = nil, subscriptionProductReplacementParams: OpenIAP.SubscriptionProductReplacementParamsAndroid? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RequestSubscriptionIosProps : Swift.Codable {
+  public var advancedCommerceData: Swift.String?
+  public var andDangerouslyFinishTransactionAutomatically: Swift.Bool?
+  public var appAccountToken: Swift.String?
+  public var introductoryOfferEligibility: Swift.Bool?
+  public var promotionalOfferJWS: OpenIAP.PromotionalOfferJWSInputIOS?
+  public var quantity: Swift.Int?
+  public var sku: Swift.String
+  public var winBackOffer: OpenIAP.WinBackOfferInputIOS?
+  public var withOffer: OpenIAP.DiscountOfferInputIOS?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(advancedCommerceData: Swift.String? = nil, andDangerouslyFinishTransactionAutomatically: Swift.Bool? = nil, appAccountToken: Swift.String? = nil, introductoryOfferEligibility: Swift.Bool? = nil, promotionalOfferJWS: OpenIAP.PromotionalOfferJWSInputIOS? = nil, quantity: Swift.Int? = nil, sku: Swift.String, winBackOffer: OpenIAP.WinBackOfferInputIOS? = nil, withOffer: OpenIAP.DiscountOfferInputIOS? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RequestSubscriptionPropsByPlatforms : Swift.Codable {
+  public var android: OpenIAP.RequestSubscriptionAndroidProps?
+  public var apple: OpenIAP.RequestSubscriptionIosProps?
+  public var google: OpenIAP.RequestSubscriptionAndroidProps?
+  public var ios: OpenIAP.RequestSubscriptionIosProps?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(android: OpenIAP.RequestSubscriptionAndroidProps? = nil, apple: OpenIAP.RequestSubscriptionIosProps? = nil, google: OpenIAP.RequestSubscriptionAndroidProps? = nil, ios: OpenIAP.RequestSubscriptionIosProps? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RequestVerifyPurchaseWithIapkitAppleProps : Swift.Codable {
+  public var jws: Swift.String
+  public init(jws: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RequestVerifyPurchaseWithIapkitGoogleProps : Swift.Codable {
+  public var purchaseToken: Swift.String
+  public init(purchaseToken: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RequestVerifyPurchaseWithIapkitProps : Swift.Codable {
+  public var apiKey: Swift.String?
+  public var apple: OpenIAP.RequestVerifyPurchaseWithIapkitAppleProps?
+  public var google: OpenIAP.RequestVerifyPurchaseWithIapkitGoogleProps?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(apiKey: Swift.String? = nil, apple: OpenIAP.RequestVerifyPurchaseWithIapkitAppleProps? = nil, google: OpenIAP.RequestVerifyPurchaseWithIapkitGoogleProps? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SubscriptionProductReplacementParamsAndroid : Swift.Codable {
+  public var oldProductId: Swift.String
+  public var replacementMode: OpenIAP.SubscriptionReplacementModeAndroid
+  public init(oldProductId: Swift.String, replacementMode: OpenIAP.SubscriptionReplacementModeAndroid)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct VerifyPurchaseAppleOptions : Swift.Codable {
+  public var sku: Swift.String
+  public init(sku: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct VerifyPurchaseGoogleOptions : Swift.Codable {
+  public var accessToken: Swift.String
+  public var isSub: Swift.Bool?
+  public var packageName: Swift.String
+  public var purchaseToken: Swift.String
+  public var sku: Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(accessToken: Swift.String, isSub: Swift.Bool? = nil, packageName: Swift.String, purchaseToken: Swift.String, sku: Swift.String)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct VerifyPurchaseHorizonOptions : Swift.Codable {
+  public var accessToken: Swift.String
+  public var sku: Swift.String
+  public var userId: Swift.String
+  public init(accessToken: Swift.String, sku: Swift.String, userId: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct VerifyPurchaseProps : Swift.Codable {
+  public var apple: OpenIAP.VerifyPurchaseAppleOptions?
+  public var google: OpenIAP.VerifyPurchaseGoogleOptions?
+  public var horizon: OpenIAP.VerifyPurchaseHorizonOptions?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(apple: OpenIAP.VerifyPurchaseAppleOptions? = nil, google: OpenIAP.VerifyPurchaseGoogleOptions? = nil, horizon: OpenIAP.VerifyPurchaseHorizonOptions? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct VerifyPurchaseWithProviderProps : Swift.Codable {
+  public var iapkit: OpenIAP.RequestVerifyPurchaseWithIapkitProps?
+  public var provider: OpenIAP.PurchaseVerificationProvider
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(iapkit: OpenIAP.RequestVerifyPurchaseWithIapkitProps? = nil, provider: OpenIAP.PurchaseVerificationProvider)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct WinBackOfferInputIOS : Swift.Codable {
+  public var offerId: Swift.String
+  public init(offerId: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum Product : Swift.Codable, OpenIAP.ProductCommon {
+  case productAndroid(OpenIAP.ProductAndroid)
+  case productIos(OpenIAP.ProductIOS)
+  public var currency: Swift.String {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var debugDescription: Swift.String? {
+    get
+  }
+  #endif
+  public var description: Swift.String {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var displayName: Swift.String? {
+    get
+  }
+  #endif
+  public var displayPrice: Swift.String {
+    get
+  }
+  public var id: Swift.String {
+    get
+  }
+  public var platform: OpenIAP.IapPlatform {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var price: Swift.Double? {
+    get
+  }
+  #endif
+  public var title: Swift.String {
+    get
+  }
+  public var type: OpenIAP.ProductType {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum ProductOrSubscription : Swift.Codable {
+  case product(OpenIAP.Product)
+  case productSubscription(OpenIAP.ProductSubscription)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum ProductSubscription : Swift.Codable, OpenIAP.ProductCommon {
+  case productSubscriptionAndroid(OpenIAP.ProductSubscriptionAndroid)
+  case productSubscriptionIos(OpenIAP.ProductSubscriptionIOS)
+  public var currency: Swift.String {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var debugDescription: Swift.String? {
+    get
+  }
+  #endif
+  public var description: Swift.String {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var displayName: Swift.String? {
+    get
+  }
+  #endif
+  public var displayPrice: Swift.String {
+    get
+  }
+  public var id: Swift.String {
+    get
+  }
+  public var platform: OpenIAP.IapPlatform {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var price: Swift.Double? {
+    get
+  }
+  #endif
+  public var title: Swift.String {
+    get
+  }
+  public var type: OpenIAP.ProductType {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum Purchase : Swift.Codable, OpenIAP.PurchaseCommon {
+  case purchaseAndroid(OpenIAP.PurchaseAndroid)
+  case purchaseIos(OpenIAP.PurchaseIOS)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var currentPlanId: Swift.String? {
+    get
+  }
+  #endif
+  public var id: Swift.String {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var ids: [Swift.String]? {
+    get
+  }
+  #endif
+  public var isAutoRenewing: Swift.Bool {
+    get
+  }
+  public var platform: OpenIAP.IapPlatform {
+    get
+  }
+  public var productId: Swift.String {
+    get
+  }
+  public var purchaseState: OpenIAP.PurchaseState {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var purchaseToken: Swift.String? {
+    get
+  }
+  #endif
+  public var quantity: Swift.Int {
+    get
+  }
+  public var store: OpenIAP.IapStore {
+    get
+  }
+  public var transactionDate: Swift.Double {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum VerifyPurchaseResult : Swift.Codable {
+  case verifyPurchaseResultAndroid(OpenIAP.VerifyPurchaseResultAndroid)
+  case verifyPurchaseResultIos(OpenIAP.VerifyPurchaseResultIOS)
+  case verifyPurchaseResultHorizon(OpenIAP.VerifyPurchaseResultHorizon)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public protocol MutationResolver {
+  func acknowledgePurchaseAndroid(_ purchaseToken: Swift.String) async throws -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  func beginRefundRequestIOS(_ sku: Swift.String) async throws -> Swift.String?
+  #endif
+  func checkAlternativeBillingAvailabilityAndroid() async throws -> Swift.Bool
+  func clearTransactionIOS() async throws -> Swift.Bool
+  func consumePurchaseAndroid(_ purchaseToken: Swift.String) async throws -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  func createAlternativeBillingTokenAndroid() async throws -> Swift.String?
+  #endif
+  func createBillingProgramReportingDetailsAndroid(_ program: OpenIAP.BillingProgramAndroid) async throws -> OpenIAP.BillingProgramReportingDetailsAndroid
+  #if compiler(>=5.3) && $NonescapableTypes
+  func deepLinkToSubscriptions(_ options: OpenIAP.DeepLinkOptions?) async throws
+  #endif
+  func endConnection() async throws -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  func finishTransaction(purchase: OpenIAP.PurchaseInput, isConsumable: Swift.Bool?) async throws
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func initConnection(_ config: OpenIAP.InitConnectionConfig?) async throws -> Swift.Bool
+  #endif
+  func isBillingProgramAvailableAndroid(_ program: OpenIAP.BillingProgramAndroid) async throws -> OpenIAP.BillingProgramAvailabilityResultAndroid
+  func launchExternalLinkAndroid(_ params: OpenIAP.LaunchExternalLinkParamsAndroid) async throws -> Swift.Bool
+  func presentCodeRedemptionSheetIOS() async throws -> Swift.Bool
+  func presentExternalPurchaseLinkIOS(_ url: Swift.String) async throws -> OpenIAP.ExternalPurchaseLinkResultIOS
+  func presentExternalPurchaseNoticeSheetIOS() async throws -> OpenIAP.ExternalPurchaseNoticeResultIOS
+  #if compiler(>=5.3) && $NonescapableTypes
+  func requestPurchase(_ params: OpenIAP.RequestPurchaseProps) async throws -> OpenIAP.RequestPurchaseResult?
+  #endif
+  func requestPurchaseOnPromotedProductIOS() async throws -> Swift.Bool
+  func restorePurchases() async throws
+  func showAlternativeBillingDialogAndroid() async throws -> Swift.Bool
+  func showExternalPurchaseCustomLinkNoticeIOS(_ noticeType: OpenIAP.ExternalPurchaseCustomLinkNoticeTypeIOS) async throws -> OpenIAP.ExternalPurchaseCustomLinkNoticeResultIOS
+  func showManageSubscriptionsIOS() async throws -> [OpenIAP.PurchaseIOS]
+  func syncIOS() async throws -> Swift.Bool
+  func validateReceipt(_ options: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResult
+  func verifyPurchase(_ options: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResult
+  func verifyPurchaseWithProvider(_ options: OpenIAP.VerifyPurchaseWithProviderProps) async throws -> OpenIAP.VerifyPurchaseWithProviderResult
+}
+public protocol QueryResolver {
+  func canPresentExternalPurchaseNoticeIOS() async throws -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  func currentEntitlementIOS(_ sku: Swift.String) async throws -> OpenIAP.PurchaseIOS?
+  #endif
+  func fetchProducts(_ params: OpenIAP.ProductRequest) async throws -> OpenIAP.FetchProductsResult
+  #if compiler(>=5.3) && $NonescapableTypes
+  func getActiveSubscriptions(_ subscriptionIds: [Swift.String]?) async throws -> [OpenIAP.ActiveSubscription]
+  #endif
+  func getAllTransactionsIOS() async throws -> [OpenIAP.PurchaseIOS]
+  #if compiler(>=5.3) && $NonescapableTypes
+  func getAppTransactionIOS() async throws -> OpenIAP.AppTransaction?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func getAvailablePurchases(_ options: OpenIAP.PurchaseOptions?) async throws -> [OpenIAP.Purchase]
+  #endif
+  func getExternalPurchaseCustomLinkTokenIOS(_ tokenType: OpenIAP.ExternalPurchaseCustomLinkTokenTypeIOS) async throws -> OpenIAP.ExternalPurchaseCustomLinkTokenResultIOS
+  func getPendingTransactionsIOS() async throws -> [OpenIAP.PurchaseIOS]
+  #if compiler(>=5.3) && $NonescapableTypes
+  func getPromotedProductIOS() async throws -> OpenIAP.ProductIOS?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func getReceiptDataIOS() async throws -> Swift.String?
+  #endif
+  func getStorefront() async throws -> Swift.String
+  func getStorefrontIOS() async throws -> Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  func getTransactionJwsIOS(_ sku: Swift.String) async throws -> Swift.String?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func hasActiveSubscriptions(_ subscriptionIds: [Swift.String]?) async throws -> Swift.Bool
+  #endif
+  func isEligibleForExternalPurchaseCustomLinkIOS() async throws -> Swift.Bool
+  func isEligibleForIntroOfferIOS(_ groupID: Swift.String) async throws -> Swift.Bool
+  func isTransactionVerifiedIOS(_ sku: Swift.String) async throws -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  func latestTransactionIOS(_ sku: Swift.String) async throws -> OpenIAP.PurchaseIOS?
+  #endif
+  func subscriptionStatusIOS(_ sku: Swift.String) async throws -> [OpenIAP.SubscriptionStatusIOS]
+  func validateReceiptIOS(_ options: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResultIOS
+}
+public protocol SubscriptionResolver {
+  func developerProvidedBillingAndroid() async throws -> OpenIAP.DeveloperProvidedBillingDetailsAndroid
+  func promotedProductIOS() async throws -> Swift.String
+  func purchaseError() async throws -> OpenIAP.PurchaseError
+  #if compiler(>=5.3) && $NonescapableTypes
+  func purchaseUpdated(_ options: OpenIAP.PurchaseUpdatedListenerOptions?) async throws -> OpenIAP.Purchase
+  #endif
+  func subscriptionBillingIssue() async throws -> OpenIAP.Purchase
+  func userChoiceBillingAndroid() async throws -> OpenIAP.UserChoiceBillingDetails
+}
+public typealias MutationAcknowledgePurchaseAndroidHandler = (_ purchaseToken: Swift.String) async throws -> Swift.Bool
+public typealias MutationBeginRefundRequestIOSHandler = (_ sku: Swift.String) async throws -> Swift.String?
+public typealias MutationCheckAlternativeBillingAvailabilityAndroidHandler = () async throws -> Swift.Bool
+public typealias MutationClearTransactionIOSHandler = () async throws -> Swift.Bool
+public typealias MutationConsumePurchaseAndroidHandler = (_ purchaseToken: Swift.String) async throws -> Swift.Bool
+public typealias MutationCreateAlternativeBillingTokenAndroidHandler = () async throws -> Swift.String?
+public typealias MutationCreateBillingProgramReportingDetailsAndroidHandler = (_ program: OpenIAP.BillingProgramAndroid) async throws -> OpenIAP.BillingProgramReportingDetailsAndroid
+public typealias MutationDeepLinkToSubscriptionsHandler = (_ options: OpenIAP.DeepLinkOptions?) async throws -> Swift.Void
+public typealias MutationEndConnectionHandler = () async throws -> Swift.Bool
+public typealias MutationFinishTransactionHandler = (_ purchase: OpenIAP.PurchaseInput, _ isConsumable: Swift.Bool?) async throws -> Swift.Void
+public typealias MutationInitConnectionHandler = (_ config: OpenIAP.InitConnectionConfig?) async throws -> Swift.Bool
+public typealias MutationIsBillingProgramAvailableAndroidHandler = (_ program: OpenIAP.BillingProgramAndroid) async throws -> OpenIAP.BillingProgramAvailabilityResultAndroid
+public typealias MutationLaunchExternalLinkAndroidHandler = (_ params: OpenIAP.LaunchExternalLinkParamsAndroid) async throws -> Swift.Bool
+public typealias MutationPresentCodeRedemptionSheetIOSHandler = () async throws -> Swift.Bool
+public typealias MutationPresentExternalPurchaseLinkIOSHandler = (_ url: Swift.String) async throws -> OpenIAP.ExternalPurchaseLinkResultIOS
+public typealias MutationPresentExternalPurchaseNoticeSheetIOSHandler = () async throws -> OpenIAP.ExternalPurchaseNoticeResultIOS
+public typealias MutationRequestPurchaseHandler = (_ params: OpenIAP.RequestPurchaseProps) async throws -> OpenIAP.RequestPurchaseResult?
+public typealias MutationRequestPurchaseOnPromotedProductIOSHandler = () async throws -> Swift.Bool
+public typealias MutationRestorePurchasesHandler = () async throws -> Swift.Void
+public typealias MutationShowAlternativeBillingDialogAndroidHandler = () async throws -> Swift.Bool
+public typealias MutationShowExternalPurchaseCustomLinkNoticeIOSHandler = (_ noticeType: OpenIAP.ExternalPurchaseCustomLinkNoticeTypeIOS) async throws -> OpenIAP.ExternalPurchaseCustomLinkNoticeResultIOS
+public typealias MutationShowManageSubscriptionsIOSHandler = () async throws -> [OpenIAP.PurchaseIOS]
+public typealias MutationSyncIOSHandler = () async throws -> Swift.Bool
+public typealias MutationValidateReceiptHandler = (_ options: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResult
+public typealias MutationVerifyPurchaseHandler = (_ options: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResult
+public typealias MutationVerifyPurchaseWithProviderHandler = (_ options: OpenIAP.VerifyPurchaseWithProviderProps) async throws -> OpenIAP.VerifyPurchaseWithProviderResult
+public struct MutationHandlers {
+  public var acknowledgePurchaseAndroid: OpenIAP.MutationAcknowledgePurchaseAndroidHandler?
+  public var beginRefundRequestIOS: OpenIAP.MutationBeginRefundRequestIOSHandler?
+  public var checkAlternativeBillingAvailabilityAndroid: OpenIAP.MutationCheckAlternativeBillingAvailabilityAndroidHandler?
+  public var clearTransactionIOS: OpenIAP.MutationClearTransactionIOSHandler?
+  public var consumePurchaseAndroid: OpenIAP.MutationConsumePurchaseAndroidHandler?
+  public var createAlternativeBillingTokenAndroid: OpenIAP.MutationCreateAlternativeBillingTokenAndroidHandler?
+  public var createBillingProgramReportingDetailsAndroid: OpenIAP.MutationCreateBillingProgramReportingDetailsAndroidHandler?
+  public var deepLinkToSubscriptions: OpenIAP.MutationDeepLinkToSubscriptionsHandler?
+  public var endConnection: OpenIAP.MutationEndConnectionHandler?
+  public var finishTransaction: OpenIAP.MutationFinishTransactionHandler?
+  public var initConnection: OpenIAP.MutationInitConnectionHandler?
+  public var isBillingProgramAvailableAndroid: OpenIAP.MutationIsBillingProgramAvailableAndroidHandler?
+  public var launchExternalLinkAndroid: OpenIAP.MutationLaunchExternalLinkAndroidHandler?
+  public var presentCodeRedemptionSheetIOS: OpenIAP.MutationPresentCodeRedemptionSheetIOSHandler?
+  public var presentExternalPurchaseLinkIOS: OpenIAP.MutationPresentExternalPurchaseLinkIOSHandler?
+  public var presentExternalPurchaseNoticeSheetIOS: OpenIAP.MutationPresentExternalPurchaseNoticeSheetIOSHandler?
+  public var requestPurchase: OpenIAP.MutationRequestPurchaseHandler?
+  public var requestPurchaseOnPromotedProductIOS: OpenIAP.MutationRequestPurchaseOnPromotedProductIOSHandler?
+  public var restorePurchases: OpenIAP.MutationRestorePurchasesHandler?
+  public var showAlternativeBillingDialogAndroid: OpenIAP.MutationShowAlternativeBillingDialogAndroidHandler?
+  public var showExternalPurchaseCustomLinkNoticeIOS: OpenIAP.MutationShowExternalPurchaseCustomLinkNoticeIOSHandler?
+  public var showManageSubscriptionsIOS: OpenIAP.MutationShowManageSubscriptionsIOSHandler?
+  public var syncIOS: OpenIAP.MutationSyncIOSHandler?
+  public var validateReceipt: OpenIAP.MutationValidateReceiptHandler?
+  public var verifyPurchase: OpenIAP.MutationVerifyPurchaseHandler?
+  public var verifyPurchaseWithProvider: OpenIAP.MutationVerifyPurchaseWithProviderHandler?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(acknowledgePurchaseAndroid: OpenIAP.MutationAcknowledgePurchaseAndroidHandler? = nil, beginRefundRequestIOS: OpenIAP.MutationBeginRefundRequestIOSHandler? = nil, checkAlternativeBillingAvailabilityAndroid: OpenIAP.MutationCheckAlternativeBillingAvailabilityAndroidHandler? = nil, clearTransactionIOS: OpenIAP.MutationClearTransactionIOSHandler? = nil, consumePurchaseAndroid: OpenIAP.MutationConsumePurchaseAndroidHandler? = nil, createAlternativeBillingTokenAndroid: OpenIAP.MutationCreateAlternativeBillingTokenAndroidHandler? = nil, createBillingProgramReportingDetailsAndroid: OpenIAP.MutationCreateBillingProgramReportingDetailsAndroidHandler? = nil, deepLinkToSubscriptions: OpenIAP.MutationDeepLinkToSubscriptionsHandler? = nil, endConnection: OpenIAP.MutationEndConnectionHandler? = nil, finishTransaction: OpenIAP.MutationFinishTransactionHandler? = nil, initConnection: OpenIAP.MutationInitConnectionHandler? = nil, isBillingProgramAvailableAndroid: OpenIAP.MutationIsBillingProgramAvailableAndroidHandler? = nil, launchExternalLinkAndroid: OpenIAP.MutationLaunchExternalLinkAndroidHandler? = nil, presentCodeRedemptionSheetIOS: OpenIAP.MutationPresentCodeRedemptionSheetIOSHandler? = nil, presentExternalPurchaseLinkIOS: OpenIAP.MutationPresentExternalPurchaseLinkIOSHandler? = nil, presentExternalPurchaseNoticeSheetIOS: OpenIAP.MutationPresentExternalPurchaseNoticeSheetIOSHandler? = nil, requestPurchase: OpenIAP.MutationRequestPurchaseHandler? = nil, requestPurchaseOnPromotedProductIOS: OpenIAP.MutationRequestPurchaseOnPromotedProductIOSHandler? = nil, restorePurchases: OpenIAP.MutationRestorePurchasesHandler? = nil, showAlternativeBillingDialogAndroid: OpenIAP.MutationShowAlternativeBillingDialogAndroidHandler? = nil, showExternalPurchaseCustomLinkNoticeIOS: OpenIAP.MutationShowExternalPurchaseCustomLinkNoticeIOSHandler? = nil, showManageSubscriptionsIOS: OpenIAP.MutationShowManageSubscriptionsIOSHandler? = nil, syncIOS: OpenIAP.MutationSyncIOSHandler? = nil, validateReceipt: OpenIAP.MutationValidateReceiptHandler? = nil, verifyPurchase: OpenIAP.MutationVerifyPurchaseHandler? = nil, verifyPurchaseWithProvider: OpenIAP.MutationVerifyPurchaseWithProviderHandler? = nil)
+  #endif
+}
+public typealias QueryCanPresentExternalPurchaseNoticeIOSHandler = () async throws -> Swift.Bool
+public typealias QueryCurrentEntitlementIOSHandler = (_ sku: Swift.String) async throws -> OpenIAP.PurchaseIOS?
+public typealias QueryFetchProductsHandler = (_ params: OpenIAP.ProductRequest) async throws -> OpenIAP.FetchProductsResult
+public typealias QueryGetActiveSubscriptionsHandler = (_ subscriptionIds: [Swift.String]?) async throws -> [OpenIAP.ActiveSubscription]
+public typealias QueryGetAllTransactionsIOSHandler = () async throws -> [OpenIAP.PurchaseIOS]
+public typealias QueryGetAppTransactionIOSHandler = () async throws -> OpenIAP.AppTransaction?
+public typealias QueryGetAvailablePurchasesHandler = (_ options: OpenIAP.PurchaseOptions?) async throws -> [OpenIAP.Purchase]
+public typealias QueryGetExternalPurchaseCustomLinkTokenIOSHandler = (_ tokenType: OpenIAP.ExternalPurchaseCustomLinkTokenTypeIOS) async throws -> OpenIAP.ExternalPurchaseCustomLinkTokenResultIOS
+public typealias QueryGetPendingTransactionsIOSHandler = () async throws -> [OpenIAP.PurchaseIOS]
+public typealias QueryGetPromotedProductIOSHandler = () async throws -> OpenIAP.ProductIOS?
+public typealias QueryGetReceiptDataIOSHandler = () async throws -> Swift.String?
+public typealias QueryGetStorefrontHandler = () async throws -> Swift.String
+public typealias QueryGetStorefrontIOSHandler = () async throws -> Swift.String
+public typealias QueryGetTransactionJwsIOSHandler = (_ sku: Swift.String) async throws -> Swift.String?
+public typealias QueryHasActiveSubscriptionsHandler = (_ subscriptionIds: [Swift.String]?) async throws -> Swift.Bool
+public typealias QueryIsEligibleForExternalPurchaseCustomLinkIOSHandler = () async throws -> Swift.Bool
+public typealias QueryIsEligibleForIntroOfferIOSHandler = (_ groupID: Swift.String) async throws -> Swift.Bool
+public typealias QueryIsTransactionVerifiedIOSHandler = (_ sku: Swift.String) async throws -> Swift.Bool
+public typealias QueryLatestTransactionIOSHandler = (_ sku: Swift.String) async throws -> OpenIAP.PurchaseIOS?
+public typealias QuerySubscriptionStatusIOSHandler = (_ sku: Swift.String) async throws -> [OpenIAP.SubscriptionStatusIOS]
+public typealias QueryValidateReceiptIOSHandler = (_ options: OpenIAP.VerifyPurchaseProps) async throws -> OpenIAP.VerifyPurchaseResultIOS
+public struct QueryHandlers {
+  public var canPresentExternalPurchaseNoticeIOS: OpenIAP.QueryCanPresentExternalPurchaseNoticeIOSHandler?
+  public var currentEntitlementIOS: OpenIAP.QueryCurrentEntitlementIOSHandler?
+  public var fetchProducts: OpenIAP.QueryFetchProductsHandler?
+  public var getActiveSubscriptions: OpenIAP.QueryGetActiveSubscriptionsHandler?
+  public var getAllTransactionsIOS: OpenIAP.QueryGetAllTransactionsIOSHandler?
+  public var getAppTransactionIOS: OpenIAP.QueryGetAppTransactionIOSHandler?
+  public var getAvailablePurchases: OpenIAP.QueryGetAvailablePurchasesHandler?
+  public var getExternalPurchaseCustomLinkTokenIOS: OpenIAP.QueryGetExternalPurchaseCustomLinkTokenIOSHandler?
+  public var getPendingTransactionsIOS: OpenIAP.QueryGetPendingTransactionsIOSHandler?
+  public var getPromotedProductIOS: OpenIAP.QueryGetPromotedProductIOSHandler?
+  public var getReceiptDataIOS: OpenIAP.QueryGetReceiptDataIOSHandler?
+  public var getStorefront: OpenIAP.QueryGetStorefrontHandler?
+  public var getStorefrontIOS: OpenIAP.QueryGetStorefrontIOSHandler?
+  public var getTransactionJwsIOS: OpenIAP.QueryGetTransactionJwsIOSHandler?
+  public var hasActiveSubscriptions: OpenIAP.QueryHasActiveSubscriptionsHandler?
+  public var isEligibleForExternalPurchaseCustomLinkIOS: OpenIAP.QueryIsEligibleForExternalPurchaseCustomLinkIOSHandler?
+  public var isEligibleForIntroOfferIOS: OpenIAP.QueryIsEligibleForIntroOfferIOSHandler?
+  public var isTransactionVerifiedIOS: OpenIAP.QueryIsTransactionVerifiedIOSHandler?
+  public var latestTransactionIOS: OpenIAP.QueryLatestTransactionIOSHandler?
+  public var subscriptionStatusIOS: OpenIAP.QuerySubscriptionStatusIOSHandler?
+  public var validateReceiptIOS: OpenIAP.QueryValidateReceiptIOSHandler?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(canPresentExternalPurchaseNoticeIOS: OpenIAP.QueryCanPresentExternalPurchaseNoticeIOSHandler? = nil, currentEntitlementIOS: OpenIAP.QueryCurrentEntitlementIOSHandler? = nil, fetchProducts: OpenIAP.QueryFetchProductsHandler? = nil, getActiveSubscriptions: OpenIAP.QueryGetActiveSubscriptionsHandler? = nil, getAllTransactionsIOS: OpenIAP.QueryGetAllTransactionsIOSHandler? = nil, getAppTransactionIOS: OpenIAP.QueryGetAppTransactionIOSHandler? = nil, getAvailablePurchases: OpenIAP.QueryGetAvailablePurchasesHandler? = nil, getExternalPurchaseCustomLinkTokenIOS: OpenIAP.QueryGetExternalPurchaseCustomLinkTokenIOSHandler? = nil, getPendingTransactionsIOS: OpenIAP.QueryGetPendingTransactionsIOSHandler? = nil, getPromotedProductIOS: OpenIAP.QueryGetPromotedProductIOSHandler? = nil, getReceiptDataIOS: OpenIAP.QueryGetReceiptDataIOSHandler? = nil, getStorefront: OpenIAP.QueryGetStorefrontHandler? = nil, getStorefrontIOS: OpenIAP.QueryGetStorefrontIOSHandler? = nil, getTransactionJwsIOS: OpenIAP.QueryGetTransactionJwsIOSHandler? = nil, hasActiveSubscriptions: OpenIAP.QueryHasActiveSubscriptionsHandler? = nil, isEligibleForExternalPurchaseCustomLinkIOS: OpenIAP.QueryIsEligibleForExternalPurchaseCustomLinkIOSHandler? = nil, isEligibleForIntroOfferIOS: OpenIAP.QueryIsEligibleForIntroOfferIOSHandler? = nil, isTransactionVerifiedIOS: OpenIAP.QueryIsTransactionVerifiedIOSHandler? = nil, latestTransactionIOS: OpenIAP.QueryLatestTransactionIOSHandler? = nil, subscriptionStatusIOS: OpenIAP.QuerySubscriptionStatusIOSHandler? = nil, validateReceiptIOS: OpenIAP.QueryValidateReceiptIOSHandler? = nil)
+  #endif
+}
+public typealias SubscriptionDeveloperProvidedBillingAndroidHandler = () async throws -> OpenIAP.DeveloperProvidedBillingDetailsAndroid
+public typealias SubscriptionPromotedProductIOSHandler = () async throws -> Swift.String
+public typealias SubscriptionPurchaseErrorHandler = () async throws -> OpenIAP.PurchaseError
+public typealias SubscriptionPurchaseUpdatedHandler = (_ options: OpenIAP.PurchaseUpdatedListenerOptions?) async throws -> OpenIAP.Purchase
+public typealias SubscriptionSubscriptionBillingIssueHandler = () async throws -> OpenIAP.Purchase
+public typealias SubscriptionUserChoiceBillingAndroidHandler = () async throws -> OpenIAP.UserChoiceBillingDetails
+public struct SubscriptionHandlers {
+  public var developerProvidedBillingAndroid: OpenIAP.SubscriptionDeveloperProvidedBillingAndroidHandler?
+  public var promotedProductIOS: OpenIAP.SubscriptionPromotedProductIOSHandler?
+  public var purchaseError: OpenIAP.SubscriptionPurchaseErrorHandler?
+  public var purchaseUpdated: OpenIAP.SubscriptionPurchaseUpdatedHandler?
+  public var subscriptionBillingIssue: OpenIAP.SubscriptionSubscriptionBillingIssueHandler?
+  public var userChoiceBillingAndroid: OpenIAP.SubscriptionUserChoiceBillingAndroidHandler?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(developerProvidedBillingAndroid: OpenIAP.SubscriptionDeveloperProvidedBillingAndroidHandler? = nil, promotedProductIOS: OpenIAP.SubscriptionPromotedProductIOSHandler? = nil, purchaseError: OpenIAP.SubscriptionPurchaseErrorHandler? = nil, purchaseUpdated: OpenIAP.SubscriptionPurchaseUpdatedHandler? = nil, subscriptionBillingIssue: OpenIAP.SubscriptionSubscriptionBillingIssueHandler? = nil, userChoiceBillingAndroid: OpenIAP.SubscriptionUserChoiceBillingAndroidHandler? = nil)
+  #endif
+}
+extension OpenIAP.PurchaseError : Foundation.LocalizedError, Foundation.CustomNSError {
+  public static var errorDomain: Swift.String {
+    get
+  }
+  public var errorCode: Swift.Int {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var errorDescription: Swift.String? {
+    get
+  }
+  #endif
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+extension OpenIAP.OpenIapLog.Level : Swift.Equatable {}
+extension OpenIAP.OpenIapLog.Level : Swift.Hashable {}
+extension OpenIAP.OpenIapLog.Level : Swift.RawRepresentable {}
+@available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+extension OpenIAP.OpenIapStore : Swift.Sendable {}
+@available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+extension OpenIAP.OpenIapStore.IapOperation : Swift.Equatable {}
+@available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+extension OpenIAP.OpenIapStore.IapOperation : Swift.Hashable {}
+@available(iOS 15.0, macOS 14.0, tvOS 16.0, watchOS 8.0, *)
+extension OpenIAP.OpenIapStore.IapOperation : Swift.RawRepresentable {}
+extension OpenIAP.AlternativeBillingModeAndroid : Swift.Equatable {}
+extension OpenIAP.AlternativeBillingModeAndroid : Swift.Hashable {}
+extension OpenIAP.AlternativeBillingModeAndroid : Swift.RawRepresentable {}
+extension OpenIAP.BillingProgramAndroid : Swift.Equatable {}
+extension OpenIAP.BillingProgramAndroid : Swift.Hashable {}
+extension OpenIAP.BillingProgramAndroid : Swift.RawRepresentable {}
+extension OpenIAP.DeveloperBillingLaunchModeAndroid : Swift.Equatable {}
+extension OpenIAP.DeveloperBillingLaunchModeAndroid : Swift.Hashable {}
+extension OpenIAP.DeveloperBillingLaunchModeAndroid : Swift.RawRepresentable {}
+extension OpenIAP.DiscountOfferType : Swift.Equatable {}
+extension OpenIAP.DiscountOfferType : Swift.Hashable {}
+extension OpenIAP.DiscountOfferType : Swift.RawRepresentable {}
+extension OpenIAP.ErrorCode : Swift.Equatable {}
+extension OpenIAP.ErrorCode : Swift.Hashable {}
+extension OpenIAP.ErrorCode : Swift.RawRepresentable {}
+extension OpenIAP.ExternalLinkLaunchModeAndroid : Swift.Equatable {}
+extension OpenIAP.ExternalLinkLaunchModeAndroid : Swift.Hashable {}
+extension OpenIAP.ExternalLinkLaunchModeAndroid : Swift.RawRepresentable {}
+extension OpenIAP.ExternalLinkTypeAndroid : Swift.Equatable {}
+extension OpenIAP.ExternalLinkTypeAndroid : Swift.Hashable {}
+extension OpenIAP.ExternalLinkTypeAndroid : Swift.RawRepresentable {}
+extension OpenIAP.ExternalPurchaseCustomLinkNoticeTypeIOS : Swift.Equatable {}
+extension OpenIAP.ExternalPurchaseCustomLinkNoticeTypeIOS : Swift.Hashable {}
+extension OpenIAP.ExternalPurchaseCustomLinkNoticeTypeIOS : Swift.RawRepresentable {}
+extension OpenIAP.ExternalPurchaseCustomLinkTokenTypeIOS : Swift.Equatable {}
+extension OpenIAP.ExternalPurchaseCustomLinkTokenTypeIOS : Swift.Hashable {}
+extension OpenIAP.ExternalPurchaseCustomLinkTokenTypeIOS : Swift.RawRepresentable {}
+extension OpenIAP.ExternalPurchaseNoticeAction : Swift.Equatable {}
+extension OpenIAP.ExternalPurchaseNoticeAction : Swift.Hashable {}
+extension OpenIAP.ExternalPurchaseNoticeAction : Swift.RawRepresentable {}
+extension OpenIAP.IapEvent : Swift.Equatable {}
+extension OpenIAP.IapEvent : Swift.Hashable {}
+extension OpenIAP.IapEvent : Swift.RawRepresentable {}
+extension OpenIAP.IapkitPurchaseState : Swift.Equatable {}
+extension OpenIAP.IapkitPurchaseState : Swift.Hashable {}
+extension OpenIAP.IapkitPurchaseState : Swift.RawRepresentable {}
+extension OpenIAP.IapPlatform : Swift.Equatable {}
+extension OpenIAP.IapPlatform : Swift.Hashable {}
+extension OpenIAP.IapPlatform : Swift.RawRepresentable {}
+extension OpenIAP.IapStore : Swift.Equatable {}
+extension OpenIAP.IapStore : Swift.Hashable {}
+extension OpenIAP.IapStore : Swift.RawRepresentable {}
+extension OpenIAP.PaymentMode : Swift.Equatable {}
+extension OpenIAP.PaymentMode : Swift.Hashable {}
+extension OpenIAP.PaymentMode : Swift.RawRepresentable {}
+extension OpenIAP.PaymentModeIOS : Swift.Equatable {}
+extension OpenIAP.PaymentModeIOS : Swift.Hashable {}
+extension OpenIAP.PaymentModeIOS : Swift.RawRepresentable {}
+extension OpenIAP.ProductQueryType : Swift.Equatable {}
+extension OpenIAP.ProductQueryType : Swift.Hashable {}
+extension OpenIAP.ProductQueryType : Swift.RawRepresentable {}
+extension OpenIAP.ProductStatusAndroid : Swift.Equatable {}
+extension OpenIAP.ProductStatusAndroid : Swift.Hashable {}
+extension OpenIAP.ProductStatusAndroid : Swift.RawRepresentable {}
+extension OpenIAP.ProductType : Swift.Equatable {}
+extension OpenIAP.ProductType : Swift.Hashable {}
+extension OpenIAP.ProductType : Swift.RawRepresentable {}
+extension OpenIAP.ProductTypeIOS : Swift.Equatable {}
+extension OpenIAP.ProductTypeIOS : Swift.Hashable {}
+extension OpenIAP.ProductTypeIOS : Swift.RawRepresentable {}
+extension OpenIAP.PurchaseState : Swift.Equatable {}
+extension OpenIAP.PurchaseState : Swift.Hashable {}
+extension OpenIAP.PurchaseState : Swift.RawRepresentable {}
+extension OpenIAP.PurchaseVerificationProvider : Swift.Equatable {}
+extension OpenIAP.PurchaseVerificationProvider : Swift.Hashable {}
+extension OpenIAP.PurchaseVerificationProvider : Swift.RawRepresentable {}
+extension OpenIAP.SubResponseCodeAndroid : Swift.Equatable {}
+extension OpenIAP.SubResponseCodeAndroid : Swift.Hashable {}
+extension OpenIAP.SubResponseCodeAndroid : Swift.RawRepresentable {}
+extension OpenIAP.SubscriptionOfferTypeIOS : Swift.Equatable {}
+extension OpenIAP.SubscriptionOfferTypeIOS : Swift.Hashable {}
+extension OpenIAP.SubscriptionOfferTypeIOS : Swift.RawRepresentable {}
+extension OpenIAP.SubscriptionPeriodIOS : Swift.Equatable {}
+extension OpenIAP.SubscriptionPeriodIOS : Swift.Hashable {}
+extension OpenIAP.SubscriptionPeriodIOS : Swift.RawRepresentable {}
+extension OpenIAP.SubscriptionPeriodUnit : Swift.Equatable {}
+extension OpenIAP.SubscriptionPeriodUnit : Swift.Hashable {}
+extension OpenIAP.SubscriptionPeriodUnit : Swift.RawRepresentable {}
+extension OpenIAP.SubscriptionReplacementModeAndroid : Swift.Equatable {}
+extension OpenIAP.SubscriptionReplacementModeAndroid : Swift.Hashable {}
+extension OpenIAP.SubscriptionReplacementModeAndroid : Swift.RawRepresentable {}
+extension OpenIAP.SubscriptionState : Swift.Equatable {}
+extension OpenIAP.SubscriptionState : Swift.Hashable {}
+extension OpenIAP.SubscriptionState : Swift.RawRepresentable {}
+extension OpenIAP.WebhookCancellationReason : Swift.Equatable {}
+extension OpenIAP.WebhookCancellationReason : Swift.Hashable {}
+extension OpenIAP.WebhookCancellationReason : Swift.RawRepresentable {}
+extension OpenIAP.WebhookEventEnvironment : Swift.Equatable {}
+extension OpenIAP.WebhookEventEnvironment : Swift.Hashable {}
+extension OpenIAP.WebhookEventEnvironment : Swift.RawRepresentable {}
+extension OpenIAP.WebhookEventSource : Swift.Equatable {}
+extension OpenIAP.WebhookEventSource : Swift.Hashable {}
+extension OpenIAP.WebhookEventSource : Swift.RawRepresentable {}
+extension OpenIAP.WebhookEventType : Swift.Equatable {}
+extension OpenIAP.WebhookEventType : Swift.Hashable {}
+extension OpenIAP.WebhookEventType : Swift.RawRepresentable {}

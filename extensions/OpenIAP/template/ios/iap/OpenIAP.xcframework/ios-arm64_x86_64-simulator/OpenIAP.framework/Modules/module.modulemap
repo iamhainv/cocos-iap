@@ -1,0 +1,4 @@
+framework module OpenIAP {
+  header "OpenIAP-Swift.h"
+  requires objc
+}
